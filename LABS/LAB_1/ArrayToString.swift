@@ -25,7 +25,7 @@ final class ArrayToStringConverter {
     // на выходе получаем: "1-5,10,14-17,20"
     
     static func convertToString(array: [Int]) -> String {
-        // код писать тут
+        
         return ""
     }
 }

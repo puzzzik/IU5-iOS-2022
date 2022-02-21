@@ -10,7 +10,6 @@ import Foundation
 // ‼️ Все вычисления производить внутри функций ‼️
 
 final class SquareSum {
-    
     // Функция получает на вход массив A целых чисел
     // и возвращает число N - сумма всех элементов массива, возведенных в квадрат.
     // Например, для [1, 2, 2] функция должна вернуть: 9; потому что 1^2 + 2^2 + 2^2 = 9.
@@ -24,11 +23,15 @@ final class SquareSum {
     // ================================
     // на вход подаем: [0]
     // на выходе получаем: 1
-    
+
     static func squareSumFor(arrayOfNumber: [Int]) -> Int {
-        //
-        // Код пишем тут
-        //
-        return 0
+        guard arrayOfNumber.count > 0 else {
+            return 0
+        }
+        var totalSquareSum = 0
+        arrayOfNumber.forEach { number in
+            totalSquareSum += number * number
+        }
+        return totalSquareSum
     }
 }
