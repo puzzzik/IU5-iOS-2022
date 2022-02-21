@@ -26,9 +26,17 @@ final class NumberToArray {
     // на выходе получаем: []
     
     static func createArrayBy(number: Int) -> [Int] {
-        //
-        // Код пишем тут
-        //
-        return []
+        guard number != 0 else {
+            return []
+        }
+        var myNumber = abs(number)
+        var array: [Int] = []
+        while myNumber > 0 {
+            let digit = myNumber % 10
+            array.append(digit * number.signum())
+            myNumber /= 10
+        }
+        return array.reversed()
     }
+    
 }

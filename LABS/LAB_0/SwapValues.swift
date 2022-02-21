@@ -47,7 +47,7 @@ final class SwapValues {
     // MARK: Internal
 
     static func swap(employeePayroll: EmployeePayroll) -> EmployeePayroll {
-        (employeePayroll.luppaSalary, employeePayroll.puppaSalary) = (employeePayroll.luppaSalary, employeePayroll.puppaSalary)
+        (employeePayroll.luppaSalary, employeePayroll.puppaSalary) = (employeePayroll.puppaSalary, employeePayroll.luppaSalary)
         return employeePayroll
     }
 }
