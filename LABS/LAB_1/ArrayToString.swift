@@ -10,7 +10,6 @@ import Foundation
 // ‼️ Все вычисления производить внутри функций ‼️
 
 final class ArrayToStringConverter {
-    
     // Функция получает на вход отсортированный массив, например [1,2,3,5,6,7,9,10,15]
     // Необходимо вернуть строку, сворачивая рядом стоящие элементы в блоки вида 1-3. Если элементов подряд нет, то элемент просто добавляется в строку.
     // Гарантируется, что:
@@ -23,9 +22,44 @@ final class ArrayToStringConverter {
     // ================================
     // на вход подаем: [1,2,3,4,5,10,14,15,16,17,20]
     // на выходе получаем: "1-5,10,14-17,20"
-    
+
     static func convertToString(array: [Int]) -> String {
-        
-        return ""
+        guard !array.isEmpty else {
+            return ""
+        }
+        guard array.count != 1 else {
+            return "\(array[0])"
+        }
+
+        var finalString: String = ""
+        var firstNumberIndex: Int = .max
+        var tempString: String = ""
+        var i = 0
+        while i < array.count - 1 {
+            while i < array.count - 1, array[i] + 1 == array[i + 1] {
+                firstNumberIndex = min(firstNumberIndex, i)
+                tempString = "\(array[firstNumberIndex])"
+                i += 1
+            }
+            if i > 1, array[i] == array[i - 1] + 1 {
+                tempString += "-\(array[i])"
+            }
+            else {
+                tempString = "\(array[i])"
+            }
+
+            if i < array.count - 1 {
+                tempString += ", "
+            }
+            finalString += tempString
+            tempString = ""
+            i += 1
+
+            firstNumberIndex = i
+        }
+        if array[array.count - 2] + 1 != array[array.count - 1] {
+            finalString += "\(array[array.count - 1])"
+        }
+        return finalString
     }
 }
