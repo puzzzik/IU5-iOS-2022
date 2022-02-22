@@ -49,7 +49,7 @@ final class ArrayToStringConverter {
             }
 
             if i < array.count - 1 {
-                tempString += ", "
+                tempString += ","
             }
             finalString += tempString
             tempString = ""
