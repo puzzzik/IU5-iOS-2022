@@ -29,11 +29,11 @@ final class NumberToArray {
         guard number != 0 else {
             return []
         }
-        var myNumber = abs(number)
+        var myNumber = number
         var array: [Int] = []
-        while myNumber > 0 {
+        while abs(myNumber) > 0 {
             let digit = myNumber % 10
-            array.append(digit * number.signum())
+            array.append(digit)
             myNumber /= 10
         }
         return array.reversed()

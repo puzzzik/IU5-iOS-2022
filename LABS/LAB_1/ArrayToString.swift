@@ -27,38 +27,32 @@ final class ArrayToStringConverter {
         guard !array.isEmpty else {
             return ""
         }
-        guard array.count != 1 else {
+        guard array.count > 1 else {
             return "\(array[0])"
         }
 
-        var finalString: String = ""
+        var finalString = ""
         var firstNumberIndex: Int = .max
-        var tempString: String = ""
-        var i = 0
-        while i < array.count - 1 {
-            while i < array.count - 1, array[i] + 1 == array[i + 1] {
+        var tempString = ""
+        for i in 0..<array.count {
+            if i < array.count - 1, array[i] + 1 == array[i + 1] {
                 firstNumberIndex = min(firstNumberIndex, i)
                 tempString = "\(array[firstNumberIndex])"
-                i += 1
+                continue
             }
+            
             if i > 1, array[i] == array[i - 1] + 1 {
                 tempString += "-\(array[i])"
             }
             else {
                 tempString = "\(array[i])"
             }
-
             if i < array.count - 1 {
                 tempString += ","
             }
             finalString += tempString
             tempString = ""
-            i += 1
-
-            firstNumberIndex = i
-        }
-        if array[array.count - 2] + 1 != array[array.count - 1] {
-            finalString += "\(array[array.count - 1])"
+            firstNumberIndex = .max
         }
         return finalString
     }

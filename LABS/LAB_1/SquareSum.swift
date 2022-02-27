@@ -25,13 +25,12 @@ final class SquareSum {
     // на выходе получаем: 1
 
     static func squareSumFor(arrayOfNumber: [Int]) -> Int {
-        guard arrayOfNumber.count > 0 else {
+        guard !arrayOfNumber.isEmpty else {
             return 0
         }
-        var totalSquareSum = 0
-        arrayOfNumber.forEach { number in
-            totalSquareSum += number * number
-        }
+        let totalSquareSum = arrayOfNumber.reduce(0, {x, y in
+            x + y*y
+        })
         return totalSquareSum
     }
 }
