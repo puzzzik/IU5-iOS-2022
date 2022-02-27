@@ -28,9 +28,7 @@ final class SquareSum {
         guard !arrayOfNumber.isEmpty else {
             return 0
         }
-        let totalSquareSum = arrayOfNumber.reduce(0, {x, y in
-            x + y*y
-        })
+        let totalSquareSum = arrayOfNumber.reduce(0) {$0 + $1 * $1}
         return totalSquareSum
     }
 }
