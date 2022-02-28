@@ -10,11 +10,9 @@ import Foundation
 // ‼️ Все вычисления производить внутри функций ‼️
 
 final class SwapValues {
-    
     // MARK: Internal data structures
     
     class EmployeePayroll: Equatable {
-        
         // MARK: Internal
         
         static func == (lhs: EmployeePayroll, rhs: EmployeePayroll) -> Bool {
@@ -49,9 +47,7 @@ final class SwapValues {
     // MARK: Internal
 
     static func swap(employeePayroll: EmployeePayroll) -> EmployeePayroll {
-        //
-        // Код пишем тут
-        //
+        (employeePayroll.luppaSalary, employeePayroll.puppaSalary) = (employeePayroll.puppaSalary, employeePayroll.luppaSalary)
         return employeePayroll
     }
 }
