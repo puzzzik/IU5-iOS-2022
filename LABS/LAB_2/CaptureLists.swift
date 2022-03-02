@@ -16,7 +16,12 @@ import Foundation
 // Решение кратко обоснуйте в блоке | Обоснование решения |.
 // Например: /* Я сделал …, т.к. это красиво */
 
-/* | Обоснование решения | */
+/* Здесь тоже наблюдается strong reference cycle, тк замыкание setValueInFavouriteNumber
+использует self. Для избежания утечки памяти было использовано capture list с unowned self.
+ unowned потому что self никогда не будет nil.
+ Также было захвачено число number для того, чтобы функция convertToSheldonsFavoriteNumberIfNeeded
+ не поменяла первоначального значения number.
+ */
 
 
 final class CaptureLists {
@@ -26,7 +31,7 @@ final class CaptureLists {
     func disputeWithSheldonCooper(myFavouriteNumber: Int) {
         var number = myFavouriteNumber
         
-        let setValueInFavouriteNumber: () -> () = {
+        let setValueInFavouriteNumber: () -> () = { [unowned self, number] in
             self.favouriteNumber = number
         }
         
