@@ -12,7 +12,8 @@ import Foundation
 // Решение кратко обоснуйте в блоке | Обоснование решения |.
 // Например: /* Я сделал …, т.к. это красиво */
 
-/* | Обоснование решения | */
+/*Так как здесь присутствует retain cycle, у одного из классов должна быть слабая ссылка
+ вместо сильной. Здесь нет разницы, в каком именно классе делать ссылку слабой, пуст будет в University*/
 
 final class Student {
     let name: String
@@ -29,7 +30,7 @@ final class Student {
 final class University {
     let universityName: String
     
-    var student: Student?
+    weak var student: Student?
     
     init(universityName: String) {
         self.universityName = universityName
