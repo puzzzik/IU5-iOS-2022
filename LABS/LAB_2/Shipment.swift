@@ -22,16 +22,20 @@ import Foundation
 final class Shipment {
     static func fruitShipment(pearsCount: Int, applesCount: Int, completion: @escaping (Int) -> ()) {
         var resultFruitCount = 0
-
+        let semaphore = DispatchSemaphore(value: 1)
         let pearsThread = Thread {
             for _ in 1...pearsCount {
+                semaphore.wait()
                 resultFruitCount += 1
+                semaphore.signal()
             }
         }
 
         let applesThread = Thread {
             for _ in 1...applesCount {
+                semaphore.wait()
                 resultFruitCount += 1
+                semaphore.signal()
             }
         }
 
