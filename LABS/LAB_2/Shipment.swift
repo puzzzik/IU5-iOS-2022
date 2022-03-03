@@ -20,28 +20,39 @@ import Foundation
 // на выходе получаем: 800
 
 final class Shipment {
-    static func fruitShipment(pearsCount: Int, applesCount: Int, completion: @escaping (Int) -> ()) {
+    static func fruitShipment(pearsCount: Int, applesCount: Int, completion: @escaping (Int) -> ())
+    {
         var resultFruitCount = 0
-        let semaphore = DispatchSemaphore(value: 1)
+        let group = DispatchGroup()
+        let lock = NSLock()
+        
+        group.enter()
+        
         let pearsThread = Thread {
             for _ in 1...pearsCount {
-                semaphore.wait()
+                lock.lock()
                 resultFruitCount += 1
-                semaphore.signal()
+                lock.unlock()
             }
-        }
+            group.leave()
 
+        }
+        group.enter()
         let applesThread = Thread {
             for _ in 1...applesCount {
-                semaphore.wait()
+                lock.lock()
                 resultFruitCount += 1
-                semaphore.signal()
+                lock.unlock()
             }
+            group.leave()
+
         }
 
         pearsThread.start()
         applesThread.start()
-
-        completion(resultFruitCount)
+        
+        group.notify(queue: DispatchQueue.main) {
+            completion(resultFruitCount)
+        }
     }
 }
