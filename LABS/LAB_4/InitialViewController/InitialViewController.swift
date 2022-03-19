@@ -58,9 +58,12 @@ extension InitialViewController: UITableViewDelegate {
         50
     }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let viewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "Lab3Storyboard")
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
 extension InitialViewController: UITableViewDataSource {
