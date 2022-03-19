@@ -62,12 +62,9 @@ extension InitialViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             let viewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "Lab3Storyboard")
             navigationController?.pushViewController(viewController, animated: true)
-<<<<<<< HEAD:LABS/LAB_4/InitialViewController/InitialViewController.swift
-=======
         } else if indexPath.row == 0 {
             let viewController = Lab4ViewController()
             navigationController?.pushViewController(viewController, animated: true)
->>>>>>> master:LABS/InitialViewController/InitialViewController.swift
         }
     }
 }
