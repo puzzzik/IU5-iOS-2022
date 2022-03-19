@@ -59,7 +59,13 @@ extension InitialViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.row == 0 {
+            let viewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "Lab3Storyboard")
+            navigationController?.pushViewController(viewController, animated: true)
+        } else if indexPath.row == 0 {
+            let viewController = Lab4ViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
