@@ -35,6 +35,7 @@ final class InitialViewController: UIViewController {
 
     private func setupTableViewController() {
         view.addSubview(tableViewController)
+        title = "Список лабораторных работ"
 //        view.backgroundColor = .systemGray6
         tableViewController.delegate = self
         tableViewController.dataSource = self
