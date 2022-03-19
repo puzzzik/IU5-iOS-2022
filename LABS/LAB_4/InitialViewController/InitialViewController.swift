@@ -58,9 +58,9 @@ extension InitialViewController: UITableViewDelegate {
         50
     }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension InitialViewController: UITableViewDataSource {
