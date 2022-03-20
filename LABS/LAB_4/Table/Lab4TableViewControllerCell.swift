@@ -34,9 +34,9 @@ final class Lab4TableViewControllerCell: UITableViewCell {
                                   width: frame.width - 150,
                                   height: 25)
         subtitleLabel.frame = CGRect(x: 65,
-                                     y: frame.minY - 5,
+                                     y: 25,
                                      width: frame.width - 150,
-                                     height: 10)
+                                     height: 15)
         imageAvatar.frame = CGRect(x: 15,
                                      y: 10,
                                      width: 30,

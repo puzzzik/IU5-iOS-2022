@@ -45,7 +45,7 @@ class Lab4ViewController: UIViewController {
             tableButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -40),
             tableButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 40),
             tableButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            tableButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40-140-15),
+            tableButton.rightAnchor.constraint(equalTo: view.leftAnchor, constant: 180),
         ])
 
         tableButton.backgroundColor = .systemGray5
@@ -59,7 +59,7 @@ class Lab4ViewController: UIViewController {
         NSLayoutConstraint.activate([
             collectionButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -40),
             collectionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 40),
-            collectionButton.leftAnchor.constraint(equalTo: tableButton.rightAnchor, constant: 15),
+            collectionButton.leftAnchor.constraint(equalTo: view.rightAnchor, constant: -180),
             collectionButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
         ])
     }

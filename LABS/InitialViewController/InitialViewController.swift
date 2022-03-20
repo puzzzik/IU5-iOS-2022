@@ -40,10 +40,11 @@ final class InitialViewController: UIViewController {
         tableViewController.delegate = self
         tableViewController.dataSource = self
         tableViewController.backgroundColor = .systemBackground
-        tableViewController.tableHeaderView = UIView(frame: CGRect(x: 0,
-                                                                   y: 0,
-                                                                   width: tableViewController.frame.width,
-                                                                   height: CGFloat.leastNormalMagnitude))
+        tableViewController.tableHeaderView = UIView(
+            frame: CGRect(x: 0,
+                          y: 0,
+                          width: tableViewController.frame.width,
+                          height: CGFloat.leastNormalMagnitude))
         registerCell()
     }
 
