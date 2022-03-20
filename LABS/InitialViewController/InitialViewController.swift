@@ -62,7 +62,7 @@ extension InitialViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             let viewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "Lab3Storyboard")
             navigationController?.pushViewController(viewController, animated: true)
-        } else if indexPath.row == 0 {
+        } else if indexPath.row == 1 {
             let viewController = Lab4ViewController()
             navigationController?.pushViewController(viewController, animated: true)
         }
