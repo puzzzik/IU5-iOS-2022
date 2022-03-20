@@ -15,6 +15,7 @@
 		66CB270C27E69D06001F6923 /* Lab4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CB270B27E69D06001F6923 /* Lab4ViewController.swift */; };
 		66CB271827E6A1BB001F6923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66CB271727E6A1BB001F6923 /* Main.storyboard */; };
 		66F19DD527E737F400449D60 /* Lab4TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F19DD427E737F400449D60 /* Lab4TableViewController.swift */; };
+		66F19DD727E74ADA00449D60 /* Lab4TableViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F19DD627E74AD900449D60 /* Lab4TableViewControllerCell.swift */; };
 		78052E9627BA89A700BB3916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78052E9527BA89A700BB3916 /* Assets.xcassets */; };
 		78052E9927BA89A700BB3916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78052E9727BA89A700BB3916 /* LaunchScreen.storyboard */; };
 		78052EBF27BA8AC300BB3916 /* SequenceСreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78052EBE27BA8AC300BB3916 /* SequenceСreator.swift */; };
@@ -56,6 +57,7 @@
 		66CB270B27E69D06001F6923 /* Lab4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4ViewController.swift; sourceTree = "<group>"; };
 		66CB271727E6A1BB001F6923 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		66F19DD427E737F400449D60 /* Lab4TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4TableViewController.swift; sourceTree = "<group>"; };
+		66F19DD627E74AD900449D60 /* Lab4TableViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4TableViewControllerCell.swift; sourceTree = "<group>"; };
 		78052E8927BA89A500BB3916 /* LABS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78052E9527BA89A700BB3916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78052E9827BA89A700BB3916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				66F19DD427E737F400449D60 /* Lab4TableViewController.swift */,
+				66F19DD627E74AD900449D60 /* Lab4TableViewControllerCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			files = (
 				7844CB9D27C2605D00B4A094 /* SwapValues.swift in Sources */,
 				66CB26FA27E67981001F6923 /* InitialViewControllerCell.swift in Sources */,
+				66F19DD727E74ADA00449D60 /* Lab4TableViewControllerCell.swift in Sources */,
 				66F19DD527E737F400449D60 /* Lab4TableViewController.swift in Sources */,
 				7844CBA327C91E3C00B4A094 /* ReferenceCycleResolver.swift in Sources */,
 				66C6D94E27E4C2B800E9FB68 /* InitialViewController.swift in Sources */,
