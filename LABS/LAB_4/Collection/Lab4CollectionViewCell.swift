@@ -8,25 +8,30 @@
 import UIKit
 
 class Lab4CollectionViewCell: UICollectionViewCell {
-    private lazy var titleLabel = UILabel()
-    private lazy var subtitleLabel = UILabel()
-    private lazy var imageView = UIImageView()
+    private var titleLabel = UILabel()
+    private var subtitleLabel = UILabel()
+    private var imageView = UIImageView()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupViews()
     }
-    
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+
 //    override func prepareForReuse() {
 //        super.prepareForReuse()
 //    }
-    
+
     private func setupViews() {
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         addSubview(imageView)
-        contentView.backgroundColor = .green
     }
+
     override func layoutSubviews() {
         imageView.frame = CGRect(x: 10,
                                  y: 10,
@@ -41,7 +46,7 @@ class Lab4CollectionViewCell: UICollectionViewCell {
                                      width: contentView.frame.width,
                                      height: 15)
     }
-    
+
     func configure(image: UIImage?, title: String?, subtitle: String?) {
         setupImage(image: image)
         setupTitle(title: title)
@@ -49,12 +54,12 @@ class Lab4CollectionViewCell: UICollectionViewCell {
     }
 
     private func setupTitle(title: String?) {
-        titleLabel.font = UIFont.systemFont(ofSize: 17)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         guard title != nil else {
             titleLabel.text = "???"
             return
         }
-        
+
         titleLabel.text = title
     }
 
