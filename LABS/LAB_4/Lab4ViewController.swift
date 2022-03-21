@@ -62,6 +62,8 @@ class Lab4ViewController: UIViewController {
             collectionButton.leftAnchor.constraint(equalTo: view.rightAnchor, constant: -180),
             collectionButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
         ])
+        collectionButton.backgroundColor = .systemGray5
+        collectionButton.addTarget(self, action: #selector(didSelectCollectionViewButton), for: .touchUpInside)
     }
     
 
@@ -70,7 +72,7 @@ class Lab4ViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     @objc func didSelectCollectionViewButton(_ sender: UIButton!) {
-//        let viewController = Lab4CollectionViewController()
-//        navigationController?.pushViewController(viewController, animated: true)
+        let viewController = Lab4CollectionViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
