@@ -22,10 +22,6 @@ class Lab4CollectionViewCell: UICollectionViewCell {
         setupViews()
     }
 
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//    }
-
     private func setupViews() {
         addSubview(titleLabel)
         addSubview(subtitleLabel)
