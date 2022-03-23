@@ -20,23 +20,10 @@ class Lab4ViewController: UIViewController {
 
     private func setupViewController() {
         title = "Лабораторная работа №4"
-//        layoutSubviews()
         view.addSubview(tableButton)
         view.addSubview(collectionButton)
     }
 
-    private func layoutSubviews() {
-        tableButton.frame = CGRect(x: 40,
-                                   y: view.frame.height/2 - 80,
-                                   width: 140,
-                                   height: 80)
-
-        collectionButton.frame = CGRect(x: tableButton.frame.maxX + 15,
-                                        y: view.frame.height/2 - 80,
-                                        width: 140,
-                                        height: 80)
-
-    }
 
     private func setupTableButton() {
         tableButton.setTitle("TableView", for: .normal)

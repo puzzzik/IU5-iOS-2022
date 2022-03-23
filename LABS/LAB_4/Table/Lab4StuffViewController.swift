@@ -100,7 +100,6 @@ class Lab4StuffViewController: UIViewController {
             segmentControl.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -30),
 
             actionButtonLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            //actionButton.leadingAnchor.constraint(lessThanOrEqualTo: actionButtonLabel.trailingAnchor, constant: 90),
             actionButton.trailingAnchor.constraint(equalTo: segmentControl.trailingAnchor),
             actionButton.widthAnchor.constraint(equalToConstant: 90)
         ])
