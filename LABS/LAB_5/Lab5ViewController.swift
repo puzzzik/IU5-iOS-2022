@@ -5,6 +5,7 @@
 //  Created by Иван Тазенков on 27.03.2022.
 //
 
+import Foundation
 import UIKit
 
 class Lab5ViewController: UIViewController {
