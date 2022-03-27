@@ -40,10 +40,11 @@ final class InitialViewController: UIViewController {
         tableViewController.delegate = self
         tableViewController.dataSource = self
         tableViewController.backgroundColor = .systemBackground
-        tableViewController.tableHeaderView = UIView(frame: CGRect(x: 0,
-                                                                   y: 0,
-                                                                   width: tableViewController.frame.width,
-                                                                   height: CGFloat.leastNormalMagnitude))
+        tableViewController.tableHeaderView = UIView(
+            frame: CGRect(x: 0,
+                          y: 0,
+                          width: tableViewController.frame.width,
+                          height: CGFloat.leastNormalMagnitude))
         registerCell()
     }
 
@@ -62,7 +63,7 @@ extension InitialViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             let viewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "Lab3Storyboard")
             navigationController?.pushViewController(viewController, animated: true)
-        } else if indexPath.row == 0 {
+        } else if indexPath.row == 1 {
             let viewController = Lab4ViewController()
             navigationController?.pushViewController(viewController, animated: true)
         }
