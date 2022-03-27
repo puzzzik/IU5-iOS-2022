@@ -14,6 +14,7 @@ final class InitialViewController: UIViewController {
     private enum CellsDisplayData: String, CaseIterable {
         case lab3 = "Лабораторная работа №3"
         case lab4 = "Лабораторная работа №4"
+        case lab5 = "Лабораторная работа №5"
     }
 
     override func viewDidLoad() {
@@ -36,7 +37,6 @@ final class InitialViewController: UIViewController {
     private func setupTableViewController() {
         view.addSubview(tableViewController)
         title = "Список лабораторных работ"
-//        view.backgroundColor = .systemGray6
         tableViewController.delegate = self
         tableViewController.dataSource = self
         tableViewController.backgroundColor = .systemBackground
@@ -65,6 +65,9 @@ extension InitialViewController: UITableViewDelegate {
             navigationController?.pushViewController(viewController, animated: true)
         } else if indexPath.row == 1 {
             let viewController = Lab4ViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        } else if indexPath.row == 2 {
+            let viewController = Lab5ViewController()
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
