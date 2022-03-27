@@ -105,11 +105,11 @@
 			path = LAB_4;
 			sourceTree = "<group>";
 		};
-		66C6D94C27E4C2B800E9FB68 /* InitialViewController */ = {
+		66CB270F27E6A046001F6923 /* InitialViewController */ = {
 			isa = PBXGroup;
 			children = (
-				66CB26F927E67980001F6923 /* InitialViewControllerCell.swift */,
-				66C6D94D27E4C2B800E9FB68 /* InitialViewController.swift */,
+				66CB271027E6A046001F6923 /* InitialViewController.swift */,
+				66CB271127E6A046001F6923 /* InitialViewControllerCell.swift */,
 			);
 			path = InitialViewController;
 			sourceTree = "<group>";
@@ -320,6 +320,7 @@
 			files = (
 				66CB271827E6A1BB001F6923 /* Main.storyboard in Resources */,
 				78052E9927BA89A700BB3916 /* LaunchScreen.storyboard in Resources */,
+				66CB273327E6AD33001F6923 /* CollectionViewCell.xib in Resources */,
 				78052E9627BA89A700BB3916 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,18 +339,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66CB273427E6AD33001F6923 /* DateViewController.swift in Sources */,
 				7844CB9D27C2605D00B4A094 /* SwapValues.swift in Sources */,
-				66CB26FA27E67981001F6923 /* InitialViewControllerCell.swift in Sources */,
 				7844CBA327C91E3C00B4A094 /* ReferenceCycleResolver.swift in Sources */,
-				66C6D94E27E4C2B800E9FB68 /* InitialViewController.swift in Sources */,
+				66CB271227E6A046001F6923 /* InitialViewController.swift in Sources */,
 				7844CBB027CADA8000B4A094 /* Shipment.swift in Sources */,
 				7844CB9027C1A34200B4A094 /* NumberToArray.swift in Sources */,
+				66CB273227E6AD33001F6923 /* CollectionViewCell.swift in Sources */,
 				78052EBF27BA8AC300BB3916 /* SequenceСreator.swift in Sources */,
 				66CB270C27E69D06001F6923 /* Lab4ViewController.swift in Sources */,
 				7844CB9427C1A72600B4A094 /* BooleanConverter.swift in Sources */,
 				66C6D95627E4C30500E9FB68 /* AppDelegate.swift in Sources */,
 				7844CB9227C1A5BE00B4A094 /* SquareSum.swift in Sources */,
+				66CB273727E6AD33001F6923 /* TableViewController.swift in Sources */,
+				66CB271327E6A046001F6923 /* InitialViewControllerCell.swift in Sources */,
 				7844CBAA27CA47B000B4A094 /* CaptureLists.swift in Sources */,
+				66CB273627E6AD33001F6923 /* StuffViewController.swift in Sources */,
 				7844CBA827CA476900B4A094 /* ConcurrentPerform.swift in Sources */,
 				15350EA627C23C01000CDAC3 /* ArrayToString.swift in Sources */,
 			);
