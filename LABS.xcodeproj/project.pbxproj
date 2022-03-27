@@ -17,6 +17,13 @@
 		660EBE5A27F0FEA20063124C /* Lab4TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F19DD427E737F400449D60 /* Lab4TableViewController.swift */; };
 		660EBE5B27F0FEA20063124C /* Lab4TableViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F19DD627E74AD900449D60 /* Lab4TableViewControllerCell.swift */; };
 		660EBE5C27F0FEA20063124C /* Lab4StuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662D1B2F27E7D8E5006AAB09 /* Lab4StuffViewController.swift */; };
+		660EBE6227F0FF090063124C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE5E27F0FF090063124C /* CollectionViewCell.swift */; };
+		660EBE6327F0FF090063124C /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660EBE5F27F0FF090063124C /* CollectionViewCell.xib */; };
+		660EBE6427F0FF090063124C /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE6027F0FF090063124C /* DateViewController.swift */; };
+		660EBE6527F0FF090063124C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE6127F0FF090063124C /* CollectionViewController.swift */; };
+		660EBE6927F0FF110063124C /* StuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE6727F0FF110063124C /* StuffViewController.swift */; };
+		660EBE6A27F0FF110063124C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE6827F0FF110063124C /* TableViewController.swift */; };
+		660EBE6C27F0FF1A0063124C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE6B27F0FF1A0063124C /* ViewController.swift */; };
 		662C9D5827E91E7B00F1A7B1 /* Lab4DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C9D5727E91E7B00F1A7B1 /* Lab4DateViewController.swift */; };
 		66C6D95627E4C30500E9FB68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D95527E4C30400E9FB68 /* AppDelegate.swift */; };
 		66CB270C27E69D06001F6923 /* Lab4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CB270B27E69D06001F6923 /* Lab4ViewController.swift */; };
@@ -59,6 +66,13 @@
 		15350EA927C23D50000CDAC3 /* ArrayToStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayToStringTests.swift; sourceTree = "<group>"; };
 		660EBE5327F0FDC40063124C /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		660EBE5427F0FDC40063124C /* InitialViewControllerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewControllerCell.swift; sourceTree = "<group>"; };
+		660EBE5E27F0FF090063124C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		660EBE5F27F0FF090063124C /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		660EBE6027F0FF090063124C /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		660EBE6127F0FF090063124C /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		660EBE6727F0FF110063124C /* StuffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StuffViewController.swift; sourceTree = "<group>"; };
+		660EBE6827F0FF110063124C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		660EBE6B27F0FF1A0063124C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		662C9D5527E9168600F1A7B1 /* Lab4CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4CollectionViewHeader.swift; sourceTree = "<group>"; };
 		662C9D5727E91E7B00F1A7B1 /* Lab4DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4DateViewController.swift; sourceTree = "<group>"; };
 		662D1B2F27E7D8E5006AAB09 /* Lab4StuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4StuffViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -122,6 +136,26 @@
 			path = InitialViewController;
 			sourceTree = "<group>";
 		};
+		660EBE5D27F0FF090063124C /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				660EBE5E27F0FF090063124C /* CollectionViewCell.swift */,
+				660EBE5F27F0FF090063124C /* CollectionViewCell.xib */,
+				660EBE6027F0FF090063124C /* DateViewController.swift */,
+				660EBE6127F0FF090063124C /* CollectionViewController.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		660EBE6627F0FF110063124C /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				660EBE6727F0FF110063124C /* StuffViewController.swift */,
+				660EBE6827F0FF110063124C /* TableViewController.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		662D1B3127E88750006AAB09 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				66CB271727E6A1BB001F6923 /* Main.storyboard */,
+				660EBE6B27F0FF1A0063124C /* ViewController.swift */,
+				660EBE6627F0FF110063124C /* Table */,
+				660EBE5D27F0FF090063124C /* Collection */,
 			);
 			path = LAB_3;
 			sourceTree = "<group>";
@@ -360,6 +397,7 @@
 			files = (
 				66CB271827E6A1BB001F6923 /* Main.storyboard in Resources */,
 				78052E9927BA89A700BB3916 /* LaunchScreen.storyboard in Resources */,
+				660EBE6327F0FF090063124C /* CollectionViewCell.xib in Resources */,
 				78052E9627BA89A700BB3916 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +422,7 @@
 				660EBE5A27F0FEA20063124C /* Lab4TableViewController.swift in Sources */,
 				660EBE5B27F0FEA20063124C /* Lab4TableViewControllerCell.swift in Sources */,
 				660EBE5C27F0FEA20063124C /* Lab4StuffViewController.swift in Sources */,
+				660EBE6227F0FF090063124C /* CollectionViewCell.swift in Sources */,
 				660EBE5527F0FDC40063124C /* InitialViewController.swift in Sources */,
 				7844CB9D27C2605D00B4A094 /* SwapValues.swift in Sources */,
 				7844CBA327C91E3C00B4A094 /* ReferenceCycleResolver.swift in Sources */,
@@ -393,12 +432,17 @@
 				78052EBF27BA8AC300BB3916 /* SequenceСreator.swift in Sources */,
 				66CB270C27E69D06001F6923 /* Lab4ViewController.swift in Sources */,
 				7844CB9427C1A72600B4A094 /* BooleanConverter.swift in Sources */,
+				660EBE6427F0FF090063124C /* DateViewController.swift in Sources */,
 				66F19DD927E7B5FF00449D60 /* Lab4TableViewHeaderView.swift in Sources */,
+				660EBE6C27F0FF1A0063124C /* ViewController.swift in Sources */,
 				66C6D95627E4C30500E9FB68 /* AppDelegate.swift in Sources */,
+				660EBE6527F0FF090063124C /* CollectionViewController.swift in Sources */,
 				7844CB9227C1A5BE00B4A094 /* SquareSum.swift in Sources */,
+				660EBE6927F0FF110063124C /* StuffViewController.swift in Sources */,
 				7844CBAA27CA47B000B4A094 /* CaptureLists.swift in Sources */,
 				7844CBA827CA476900B4A094 /* ConcurrentPerform.swift in Sources */,
 				15350EA627C23C01000CDAC3 /* ArrayToString.swift in Sources */,
+				660EBE6A27F0FF110063124C /* TableViewController.swift in Sources */,
 				662C9D5827E91E7B00F1A7B1 /* Lab4DateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

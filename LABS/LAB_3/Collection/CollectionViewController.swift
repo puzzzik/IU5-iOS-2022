@@ -6,24 +6,24 @@
 //
 
 import UIKit
-struct DataStruct {
+struct Lab3DataStruct {
     var image: UIImage?
     var title: String?
     var subtitle: String?
 }
 
-var data: [DataStruct] = [
-    DataStruct(
+let lab3Data: [Lab3DataStruct] = [
+    Lab3DataStruct(
         image: UIImage(systemName: "square.and.arrow.down.fill"),
         title: "Первая",
         subtitle: "Штучка"
     ),
-    DataStruct(
+    Lab3DataStruct(
         image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"),
         title: "Вторая",
         subtitle: "Рисовашка"
     ),
-    DataStruct(
+    Lab3DataStruct(
         image: UIImage(systemName: "trash.slash.square"),
         title: "Третья",
         subtitle: "Мусорка"
