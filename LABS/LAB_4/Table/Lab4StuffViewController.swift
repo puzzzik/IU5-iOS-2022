@@ -44,6 +44,7 @@ class Lab4StuffViewController: UIViewController {
         view.addSubview(textFieldLabel)
         view.addSubview(segmentControlLabel)
         view.addSubview(actionButtonLabel)
+		view.backgroundColor = .systemBackground
     }
 
     private func setupLabels() {

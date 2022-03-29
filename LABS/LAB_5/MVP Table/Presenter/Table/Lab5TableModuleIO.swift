@@ -9,4 +9,6 @@ import Foundation
 
 protocol Lab5TableModuleInput: AnyObject {}
 
-protocol Lab5TableModuleOutput: AnyObject {}
+protocol Lab5TableModuleOutput: AnyObject {
+	func lab5TableModuleWantsToOpenStuffModule()
+}

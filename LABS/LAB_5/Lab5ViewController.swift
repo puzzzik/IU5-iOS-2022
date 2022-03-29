@@ -11,6 +11,8 @@ import UIKit
 class Lab5ViewController: UIViewController {
     private let tableButton = UIButton(type: .system)
     private let collectionButton = UIButton(type: .system)
+	private var openedViewController: UIViewController?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +57,23 @@ class Lab5ViewController: UIViewController {
     }
     
 
-    @objc func didSelectTableViewButton(_ sender: UIButton!) {
-        let viewController = Lab4TableViewController()
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    @objc func didSelectCollectionViewButton(_ sender: UIButton!) {
+    @objc private func didSelectTableViewButton(_ sender: UIButton!) {
+        let builder = Lab5TableBuilder()
+		let viewController = builder.build(output: self)
+		navigationController?.pushViewController(viewController, animated: true)
+		
+	}
+    @objc private func didSelectCollectionViewButton(_ sender: UIButton!) {
         let viewController = Lab4CollectionViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+		present(viewController, animated: true) { [weak self] in
+			self?.openedViewController = viewController
+		}
     }
+}
+
+extension Lab5ViewController: Lab5TableModuleOutput {
+	
+	func lab5TableModuleWantsToOpenStuffModule() {
+		present(Lab4StuffViewController(), animated: true)
+	}
 }
