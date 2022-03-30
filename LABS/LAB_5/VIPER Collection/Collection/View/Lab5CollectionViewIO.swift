@@ -6,9 +6,7 @@
 //
 
 import Foundation
-protocol Lab5CollectionViewInput: AnyObject {
+protocol Lab5CollectionViewIO: AnyObject {
 	
-}
-
-protocol Lab5CollectionViewOutput: AnyObject {
+	var presenter: Lab5CollectionPresenterIO! { get set }
 }

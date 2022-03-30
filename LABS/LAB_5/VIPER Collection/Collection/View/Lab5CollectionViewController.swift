@@ -8,22 +8,17 @@
 import Foundation
 import UIKit
 
-//var data: [DataStruct] = [
-//	DataStruct(
-//		image: UIImage(systemName: "square.and.arrow.down.fill"),
-//		title: "Первая",
-//		subtitle: "Штучка"),
-//	DataStruct(
-//		image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"),
-//		title: "Вторая",
-//		subtitle: "Рисовашка"),
-//	DataStruct(
-//		image: UIImage(systemName: "trash.slash.square"),
-//		title: "Третья",
-//		subtitle: "Мусорка"),
-//]
-
-class Lab5CollectionViewController: UIViewController {
+final class Lab5CollectionViewController: UIViewController {
+	
+	var presenter: Lab5CollectionPresenterIO!
+	
+	private enum Constants {
+		static let headerHeight: CGFloat = 20
+		static let cellBackgroundColor: UIColor = .systemGray6
+		static let inset: CGFloat = 12
+		static let cellSize = CGSize(width: 160, height: 70)
+	}
+	
 	private lazy var collectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
 		return UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -38,11 +33,11 @@ class Lab5CollectionViewController: UIViewController {
 	}
 	
 	private func registerHeaderFooter() {
-		collectionView.register(Lab4CollectionViewHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
-		collectionView.register(Lab4CollectionViewHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
+		collectionView.register(Lab5CollectionViewHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
+		collectionView.register(Lab5CollectionViewHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
 	}
 	private func registerCell() {
-		collectionView.register(Lab4CollectionViewCell.self, forCellWithReuseIdentifier: "Lab4CollectionViewCell")
+		collectionView.register(Lab5CollectionViewCell.self, forCellWithReuseIdentifier: "Lab5CollectionViewCell")
 	}
 	
 	private func setupCollectionView() {
@@ -73,28 +68,26 @@ class Lab5CollectionViewController: UIViewController {
 extension Lab5CollectionViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView,
 						didSelectItemAt indexPath: IndexPath) {
-		let viewController = Lab4DateViewController()
-		navigationController?.pushViewController(viewController, animated: true)
+		presenter.userDidSelect()
 	}
 }
 
 extension Lab5CollectionViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView,
 						numberOfItemsInSection section: Int) -> Int {
-		data.count
+		presenter.numberOfCells()
 	}
 	
 	func collectionView(_ collectionView: UICollectionView,
 						cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(
-			withReuseIdentifier: "Lab4CollectionViewCell",
-			for: indexPath) as? Lab4CollectionViewCell else {
+			withReuseIdentifier: "Lab5CollectionViewCell",
+			for: indexPath) as? Lab5CollectionViewCell else {
 				return UICollectionViewCell()
 			}
-		cell.configure(image: data[indexPath.row].image,
-					   title: data[indexPath.row].title,
-					   subtitle: data[indexPath.row].subtitle)
-		cell.backgroundColor = UIColor(red: 0.6402, green: 0.6688, blue: 0.7257, alpha: 0.2)
+		presenter.giveDataToCell(cell: cell, index: indexPath.row)
+
+		cell.backgroundColor = Constants.cellBackgroundColor
 		return cell
 	}
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -105,16 +98,16 @@ extension Lab5CollectionViewController: UICollectionViewDataSource {
 			let footer = collectionView.dequeueReusableSupplementaryView(
 				ofKind: UICollectionView.elementKindSectionFooter,
 				withReuseIdentifier: "Footer",
-				for: indexPath) as! Lab4CollectionViewHeaderFooter
-			footer.cofigure(text: "Футер", color: .systemOrange)
+				for: indexPath) as! Lab5CollectionViewHeaderFooter
+			footer.cofigure(text: "Футер", color: .systemBackground)
 			return footer
 		} else {
 			
 			let header = collectionView.dequeueReusableSupplementaryView(
 				ofKind: UICollectionView.elementKindSectionHeader,
 				withReuseIdentifier: "Header",
-				for: indexPath) as! Lab4CollectionViewHeaderFooter
-			header.cofigure(text: "Хедер", color: .systemTeal)
+				for: indexPath) as! Lab5CollectionViewHeaderFooter
+			header.cofigure(text: "Хедер", color: .systemBackground)
 			return header
 			
 		}
@@ -126,21 +119,24 @@ extension Lab5CollectionViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView,
 						layout collectionViewLayout: UICollectionViewLayout,
 						insetForSectionAt section: Int) -> UIEdgeInsets {
-		let inset: CGFloat = 10
-		return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+		return UIEdgeInsets(top: Constants.inset, left: Constants.inset, bottom: Constants.inset, right: Constants.inset)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView,
 						layout collectionViewLayout: UICollectionViewLayout,
 						sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: 160, height: 70)
+		return Constants.cellSize
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-		return CGSize(width: view.frame.size.width, height: 100)
+		return CGSize(width: view.frame.size.width, height: Constants.headerHeight)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-		return CGSize(width: view.frame.size.width, height: 100)
+		return CGSize(width: view.frame.size.width, height: 20)
 	}
+}
+
+extension Lab5CollectionViewController: Lab5CollectionViewIO {
+	
 }

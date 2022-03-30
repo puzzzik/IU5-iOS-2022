@@ -64,10 +64,9 @@ class Lab5ViewController: UIViewController {
 		
 	}
     @objc private func didSelectCollectionViewButton(_ sender: UIButton!) {
-        let viewController = Lab4CollectionViewController()
-		present(viewController, animated: true) { [weak self] in
-			self?.openedViewController = viewController
-		}
+        let builder = Lab5CollectionBuilder()
+		let viewController = builder.build()
+		navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
