@@ -74,6 +74,8 @@ class Lab5ViewController: UIViewController {
 extension Lab5ViewController: Lab5TableModuleOutput {
 	
 	func lab5TableModuleWantsToOpenStuffModule() {
-		present(Lab4StuffViewController(), animated: true)
+		let builder = Lab5StuffBuilder()
+		let viewController = builder.build()
+		present(viewController, animated: true)
 	}
 }

@@ -31,6 +31,11 @@
 		660EBE8A27F10AAC0063124C /* Lab5TableViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE8427F10AAC0063124C /* Lab5TableViewIO.swift */; };
 		660EBE8B27F10AAC0063124C /* Lab5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EBE8527F10AAC0063124C /* Lab5ViewController.swift */; };
 		662C9D5827E91E7B00F1A7B1 /* Lab4DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C9D5727E91E7B00F1A7B1 /* Lab4DateViewController.swift */; };
+		668BE97827F4361200D47744 /* Lab5StuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE97727F4361200D47744 /* Lab5StuffViewController.swift */; };
+		668BE97A27F4362000D47744 /* Lab5StuffViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE97927F4362000D47744 /* Lab5StuffViewIO.swift */; };
+		668BE97C27F4362D00D47744 /* Lab5StuffPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE97B27F4362D00D47744 /* Lab5StuffPresenter.swift */; };
+		668BE97E27F4363F00D47744 /* Lab5StuffModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE97D27F4363F00D47744 /* Lab5StuffModuleIO.swift */; };
+		668BE98027F43FCD00D47744 /* Lab5StuffBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE97F27F43FCD00D47744 /* Lab5StuffBuilder.swift */; };
 		66C6D95627E4C30500E9FB68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D95527E4C30400E9FB68 /* AppDelegate.swift */; };
 		66C7B5E927F37FB200633214 /* Lab5TableViewHeaderFooterVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B5E827F37FB200633214 /* Lab5TableViewHeaderFooterVIew.swift */; };
 		66C7B5EB27F37FED00633214 /* Lab5TableViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B5EA27F37FED00633214 /* Lab5TableViewControllerCell.swift */; };
@@ -99,6 +104,11 @@
 		662D1B2F27E7D8E5006AAB09 /* Lab4StuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4StuffViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		662D1B3227E88782006AAB09 /* Lab4CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4CollectionViewController.swift; sourceTree = "<group>"; };
 		662D1B3427E88C22006AAB09 /* Lab4CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4CollectionViewCell.swift; sourceTree = "<group>"; };
+		668BE97727F4361200D47744 /* Lab5StuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5StuffViewController.swift; sourceTree = "<group>"; };
+		668BE97927F4362000D47744 /* Lab5StuffViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5StuffViewIO.swift; sourceTree = "<group>"; };
+		668BE97B27F4362D00D47744 /* Lab5StuffPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Lab5StuffPresenter.swift; path = LABS/LAB_5/MVP/Stuff/View/Lab5StuffPresenter.swift; sourceTree = SOURCE_ROOT; };
+		668BE97D27F4363F00D47744 /* Lab5StuffModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5StuffModuleIO.swift; sourceTree = "<group>"; };
+		668BE97F27F43FCD00D47744 /* Lab5StuffBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5StuffBuilder.swift; sourceTree = "<group>"; };
 		66C6D95527E4C30400E9FB68 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66C7B5E827F37FB200633214 /* Lab5TableViewHeaderFooterVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5TableViewHeaderFooterVIew.swift; sourceTree = "<group>"; };
 		66C7B5EA27F37FED00633214 /* Lab5TableViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5TableViewControllerCell.swift; sourceTree = "<group>"; };
@@ -190,26 +200,26 @@
 			isa = PBXGroup;
 			children = (
 				66C7B5F927F3966600633214 /* VIPER Collection */,
-				660EBE7D27F10AAC0063124C /* MVP Table */,
+				660EBE7D27F10AAC0063124C /* MVP */,
 				660EBE8527F10AAC0063124C /* Lab5ViewController.swift */,
 			);
 			path = LAB_5;
 			sourceTree = "<group>";
 		};
-		660EBE7D27F10AAC0063124C /* MVP Table */ = {
+		660EBE7D27F10AAC0063124C /* MVP */ = {
 			isa = PBXGroup;
 			children = (
-				660EBE7E27F10AAC0063124C /* Presenter */,
-				660EBE8227F10AAC0063124C /* View */,
-				660EBE8127F10AAC0063124C /* Lab5TableViewBuilder.swift */,
+				668BE97427F435D900D47744 /* Stuff */,
+				668BE97327F435D000D47744 /* Table */,
 			);
-			path = "MVP Table";
+			path = MVP;
 			sourceTree = "<group>";
 		};
 		660EBE7E27F10AAC0063124C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				66C7B5F127F3907200633214 /* Table */,
+				660EBE7F27F10AAC0063124C /* Lab5TableModuleIO.swift */,
+				660EBE8027F10AAC0063124C /* Lab5TablePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -217,7 +227,10 @@
 		660EBE8227F10AAC0063124C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				66C7B5F027F3906100633214 /* Table */,
+				660EBE8327F10AAC0063124C /* Lab5TableViewController.swift */,
+				660EBE8427F10AAC0063124C /* Lab5TableViewIO.swift */,
+				66C7B5E827F37FB200633214 /* Lab5TableViewHeaderFooterVIew.swift */,
+				66C7B5EA27F37FED00633214 /* Lab5TableViewControllerCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +246,44 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
+		668BE97327F435D000D47744 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				660EBE7E27F10AAC0063124C /* Presenter */,
+				660EBE8227F10AAC0063124C /* View */,
+				660EBE8127F10AAC0063124C /* Lab5TableViewBuilder.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		668BE97427F435D900D47744 /* Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				668BE97527F435E700D47744 /* Presenter */,
+				668BE97627F435EF00D47744 /* View */,
+				668BE97F27F43FCD00D47744 /* Lab5StuffBuilder.swift */,
+			);
+			path = Stuff;
+			sourceTree = "<group>";
+		};
+		668BE97527F435E700D47744 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				668BE97B27F4362D00D47744 /* Lab5StuffPresenter.swift */,
+				668BE97D27F4363F00D47744 /* Lab5StuffModuleIO.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		668BE97627F435EF00D47744 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				668BE97727F4361200D47744 /* Lab5StuffViewController.swift */,
+				668BE97927F4362000D47744 /* Lab5StuffViewIO.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		66C6D94027E4BFD100E9FB68 /* LAB_4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,26 +292,6 @@
 				66CB270B27E69D06001F6923 /* Lab4ViewController.swift */,
 			);
 			path = LAB_4;
-			sourceTree = "<group>";
-		};
-		66C7B5F027F3906100633214 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				660EBE8327F10AAC0063124C /* Lab5TableViewController.swift */,
-				660EBE8427F10AAC0063124C /* Lab5TableViewIO.swift */,
-				66C7B5E827F37FB200633214 /* Lab5TableViewHeaderFooterVIew.swift */,
-				66C7B5EA27F37FED00633214 /* Lab5TableViewControllerCell.swift */,
-			);
-			path = Table;
-			sourceTree = "<group>";
-		};
-		66C7B5F127F3907200633214 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				660EBE7F27F10AAC0063124C /* Lab5TableModuleIO.swift */,
-				660EBE8027F10AAC0063124C /* Lab5TablePresenter.swift */,
-			);
-			path = Table;
 			sourceTree = "<group>";
 		};
 		66C7B5F927F3966600633214 /* VIPER Collection */ = {
@@ -556,6 +587,7 @@
 				660EBE8A27F10AAC0063124C /* Lab5TableViewIO.swift in Sources */,
 				660EBE5A27F0FEA20063124C /* Lab4TableViewController.swift in Sources */,
 				66C7B60827F3973200633214 /* Lab5CollectionInteractorIO.swift in Sources */,
+				668BE97C27F4362D00D47744 /* Lab5StuffPresenter.swift in Sources */,
 				660EBE5B27F0FEA20063124C /* Lab4TableViewControllerCell.swift in Sources */,
 				660EBE5C27F0FEA20063124C /* Lab4StuffViewController.swift in Sources */,
 				660EBE6227F0FF090063124C /* CollectionViewCell.swift in Sources */,
@@ -564,6 +596,7 @@
 				7844CB9D27C2605D00B4A094 /* SwapValues.swift in Sources */,
 				66C7B60227F396F600633214 /* Lab5CollectionPresenter.swift in Sources */,
 				66C7B60A27F3983100633214 /* Lab5CollectionViewEntity.swift in Sources */,
+				668BE97E27F4363F00D47744 /* Lab5StuffModuleIO.swift in Sources */,
 				660EBE8727F10AAC0063124C /* Lab5TablePresenter.swift in Sources */,
 				660EBE8B27F10AAC0063124C /* Lab5ViewController.swift in Sources */,
 				7844CBA327C91E3C00B4A094 /* ReferenceCycleResolver.swift in Sources */,
@@ -576,11 +609,13 @@
 				78052EBF27BA8AC300BB3916 /* SequenceСreator.swift in Sources */,
 				66CB270C27E69D06001F6923 /* Lab4ViewController.swift in Sources */,
 				66C7B60627F3971D00633214 /* Lab5CollectionInteractor.swift in Sources */,
+				668BE97827F4361200D47744 /* Lab5StuffViewController.swift in Sources */,
 				7844CB9427C1A72600B4A094 /* BooleanConverter.swift in Sources */,
 				660EBE6427F0FF090063124C /* DateViewController.swift in Sources */,
 				66C7B5E927F37FB200633214 /* Lab5TableViewHeaderFooterVIew.swift in Sources */,
 				66F19DD927E7B5FF00449D60 /* Lab4TableViewHeaderView.swift in Sources */,
 				660EBE6C27F0FF1A0063124C /* ViewController.swift in Sources */,
+				668BE98027F43FCD00D47744 /* Lab5StuffBuilder.swift in Sources */,
 				66C6D95627E4C30500E9FB68 /* AppDelegate.swift in Sources */,
 				660EBE8827F10AAC0063124C /* Lab5TableViewBuilder.swift in Sources */,
 				660EBE8627F10AAC0063124C /* Lab5TableModuleIO.swift in Sources */,
@@ -588,6 +623,7 @@
 				7844CB9227C1A5BE00B4A094 /* SquareSum.swift in Sources */,
 				660EBE6927F0FF110063124C /* StuffViewController.swift in Sources */,
 				7844CBAA27CA47B000B4A094 /* CaptureLists.swift in Sources */,
+				668BE97A27F4362000D47744 /* Lab5StuffViewIO.swift in Sources */,
 				7844CBA827CA476900B4A094 /* ConcurrentPerform.swift in Sources */,
 				15350EA627C23C01000CDAC3 /* ArrayToString.swift in Sources */,
 				660EBE6A27F0FF110063124C /* TableViewController.swift in Sources */,

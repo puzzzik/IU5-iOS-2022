@@ -123,7 +123,7 @@ class Lab4StuffViewController: UIViewController {
         textField.text = "Изначальный текст"
         textField.clearsOnBeginEditing = true
         textField.borderStyle = .roundedRect
-        textField.addTarget(self, action: #selector(didChangeTextField), for: .allEditingEvents)
+		textField.addTarget(self, action: #selector(didChangeTextField), for: .editingDidBegin)
     }
 
     private func setupSegmentControl() {

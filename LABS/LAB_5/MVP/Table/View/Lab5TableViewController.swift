@@ -102,3 +102,4 @@ extension Lab5TableViewController: UITableViewDataSource {
 }
 
 extension Lab5TableViewController: Lab5TableViewInput {}
+

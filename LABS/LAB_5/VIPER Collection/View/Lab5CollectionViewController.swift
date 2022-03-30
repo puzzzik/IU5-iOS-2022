@@ -8,20 +8,20 @@
 import Foundation
 import UIKit
 
-var data: [DataStruct] = [
-	DataStruct(
-		image: UIImage(systemName: "square.and.arrow.down.fill"),
-		title: "Первая",
-		subtitle: "Штучка"),
-	DataStruct(
-		image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"),
-		title: "Вторая",
-		subtitle: "Рисовашка"),
-	DataStruct(
-		image: UIImage(systemName: "trash.slash.square"),
-		title: "Третья",
-		subtitle: "Мусорка"),
-]
+//var data: [DataStruct] = [
+//	DataStruct(
+//		image: UIImage(systemName: "square.and.arrow.down.fill"),
+//		title: "Первая",
+//		subtitle: "Штучка"),
+//	DataStruct(
+//		image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"),
+//		title: "Вторая",
+//		subtitle: "Рисовашка"),
+//	DataStruct(
+//		image: UIImage(systemName: "trash.slash.square"),
+//		title: "Третья",
+//		subtitle: "Мусорка"),
+//]
 
 class Lab5CollectionViewController: UIViewController {
 	private lazy var collectionView: UICollectionView = {
@@ -70,7 +70,7 @@ class Lab5CollectionViewController: UIViewController {
 	
 }
 
-extension Lab4CollectionViewController: UICollectionViewDelegate {
+extension Lab5CollectionViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView,
 						didSelectItemAt indexPath: IndexPath) {
 		let viewController = Lab4DateViewController()
@@ -78,7 +78,7 @@ extension Lab4CollectionViewController: UICollectionViewDelegate {
 	}
 }
 
-extension Lab4CollectionViewController: UICollectionViewDataSource {
+extension Lab5CollectionViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView,
 						numberOfItemsInSection section: Int) -> Int {
 		data.count
@@ -121,7 +121,7 @@ extension Lab4CollectionViewController: UICollectionViewDataSource {
 	}
 }
 
-extension Lab4CollectionViewController: UICollectionViewDelegateFlowLayout {
+extension Lab5CollectionViewController: UICollectionViewDelegateFlowLayout {
 	
 	func collectionView(_ collectionView: UICollectionView,
 						layout collectionViewLayout: UICollectionViewLayout,
