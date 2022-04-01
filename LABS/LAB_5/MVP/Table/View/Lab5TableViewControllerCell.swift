@@ -19,11 +19,13 @@ final class Lab5TableViewControllerCell: UITableViewCell {
 			static let y: CGFloat = 3
 			static let height: CGFloat = 25
 		}
+
 		enum subtitle {
 			static let x: CGFloat = 65
 			static let y: CGFloat = 25
 			static let height: CGFloat = 15
 		}
+
 		enum image {
 			static let x: CGFloat = 15
 			static let y: CGFloat = 10
@@ -49,17 +51,17 @@ final class Lab5TableViewControllerCell: UITableViewCell {
 	
 	override func layoutSubviews() {
 		titleLabel.frame = CGRect(x: FrameSizes.title.x,
-								  y: FrameSizes.title.y,
+		                          y: FrameSizes.title.y,
 		                          width: frame.width - 150,
-								  height: FrameSizes.title.height)
+		                          height: FrameSizes.title.height)
 		subtitleLabel.frame = CGRect(x: FrameSizes.subtitle.x,
-									 y: FrameSizes.subtitle.y,
-									 width: frame.width - 150,
-									 height: FrameSizes.subtitle.height)
+		                             y: FrameSizes.subtitle.y,
+		                             width: frame.width - 150,
+		                             height: FrameSizes.subtitle.height)
 		imageAvatar.frame = CGRect(x: FrameSizes.image.x,
-								   y: FrameSizes.image.y,
-								   width: FrameSizes.image.width,
-								   height: FrameSizes.image.height)
+		                           y: FrameSizes.image.y,
+		                           width: FrameSizes.image.width,
+		                           height: FrameSizes.image.height)
 	}
 	
 	private func setupViews() {

@@ -38,7 +38,7 @@
 		668BE98027F43FCD00D47744 /* Lab5StuffBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE97F27F43FCD00D47744 /* Lab5StuffBuilder.swift */; };
 		668BE98327F447C100D47744 /* Lab5CollectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE98227F447C100D47744 /* Lab5CollectionRouter.swift */; };
 		668BE98527F4484000D47744 /* Lab5CollectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE98427F4484000D47744 /* Lab5CollectionBuilder.swift */; };
-		668BE98727F44C7600D47744 /* Lab5CollectionRouterIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE98627F44C7500D47744 /* Lab5CollectionRouterIO.swift */; };
+		668BE98727F44C7600D47744 /* Lab5CollectionRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE98627F44C7500D47744 /* Lab5CollectionRouterInput.swift */; };
 		668BE98B27F4619A00D47744 /* Lab5CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE98A27F4619A00D47744 /* Lab5CollectionViewCell.swift */; };
 		668BE98D27F461BF00D47744 /* Lab5CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE98C27F461BF00D47744 /* Lab5CollectionViewHeader.swift */; };
 		668BE98F27F4621900D47744 /* Lab5DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668BE98E27F4621900D47744 /* Lab5DateViewController.swift */; };
@@ -48,7 +48,7 @@
 		66C7B5FE27F396CF00633214 /* Lab5CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B5FD27F396CF00633214 /* Lab5CollectionViewController.swift */; };
 		66C7B60027F396E000633214 /* Lab5CollectionViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B5FF27F396E000633214 /* Lab5CollectionViewIO.swift */; };
 		66C7B60227F396F600633214 /* Lab5CollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B60127F396F600633214 /* Lab5CollectionPresenter.swift */; };
-		66C7B60427F3970800633214 /* Lab5CollectionPresenterIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B60327F3970800633214 /* Lab5CollectionPresenterIO.swift */; };
+		66C7B60427F3970800633214 /* Lab5CollectionModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B60327F3970800633214 /* Lab5CollectionModuleIO.swift */; };
 		66C7B60627F3971D00633214 /* Lab5CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B60527F3971D00633214 /* Lab5CollectionInteractor.swift */; };
 		66C7B60827F3973200633214 /* Lab5CollectionInteractorIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B60727F3973200633214 /* Lab5CollectionInteractorIO.swift */; };
 		66C7B60A27F3983100633214 /* Lab5CollectionViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7B60927F3983100633214 /* Lab5CollectionViewEntity.swift */; };
@@ -117,7 +117,7 @@
 		668BE97F27F43FCD00D47744 /* Lab5StuffBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5StuffBuilder.swift; sourceTree = "<group>"; };
 		668BE98227F447C100D47744 /* Lab5CollectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionRouter.swift; sourceTree = "<group>"; };
 		668BE98427F4484000D47744 /* Lab5CollectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionBuilder.swift; sourceTree = "<group>"; };
-		668BE98627F44C7500D47744 /* Lab5CollectionRouterIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionRouterIO.swift; sourceTree = "<group>"; };
+		668BE98627F44C7500D47744 /* Lab5CollectionRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionRouterInput.swift; sourceTree = "<group>"; };
 		668BE98A27F4619A00D47744 /* Lab5CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionViewCell.swift; sourceTree = "<group>"; };
 		668BE98C27F461BF00D47744 /* Lab5CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionViewHeader.swift; sourceTree = "<group>"; };
 		668BE98E27F4621900D47744 /* Lab5DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5DateViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		66C7B5FD27F396CF00633214 /* Lab5CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionViewController.swift; sourceTree = "<group>"; };
 		66C7B5FF27F396E000633214 /* Lab5CollectionViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionViewIO.swift; sourceTree = "<group>"; };
 		66C7B60127F396F600633214 /* Lab5CollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionPresenter.swift; sourceTree = "<group>"; };
-		66C7B60327F3970800633214 /* Lab5CollectionPresenterIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionPresenterIO.swift; sourceTree = "<group>"; };
+		66C7B60327F3970800633214 /* Lab5CollectionModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionModuleIO.swift; sourceTree = "<group>"; };
 		66C7B60527F3971D00633214 /* Lab5CollectionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionInteractor.swift; sourceTree = "<group>"; };
 		66C7B60727F3973200633214 /* Lab5CollectionInteractorIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionInteractorIO.swift; sourceTree = "<group>"; };
 		66C7B60927F3983100633214 /* Lab5CollectionViewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab5CollectionViewEntity.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				668BE98227F447C100D47744 /* Lab5CollectionRouter.swift */,
-				668BE98627F44C7500D47744 /* Lab5CollectionRouterIO.swift */,
+				668BE98627F44C7500D47744 /* Lab5CollectionRouterInput.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				66C7B60127F396F600633214 /* Lab5CollectionPresenter.swift */,
-				66C7B60327F3970800633214 /* Lab5CollectionPresenterIO.swift */,
+				66C7B60327F3970800633214 /* Lab5CollectionModuleIO.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -649,10 +649,10 @@
 				7844CBB027CADA8000B4A094 /* Shipment.swift in Sources */,
 				7844CB9027C1A34200B4A094 /* NumberToArray.swift in Sources */,
 				66C7B5FE27F396CF00633214 /* Lab5CollectionViewController.swift in Sources */,
-				66C7B60427F3970800633214 /* Lab5CollectionPresenterIO.swift in Sources */,
+				66C7B60427F3970800633214 /* Lab5CollectionModuleIO.swift in Sources */,
 				78052EBF27BA8AC300BB3916 /* SequenceСreator.swift in Sources */,
 				66CB270C27E69D06001F6923 /* Lab4ViewController.swift in Sources */,
-				668BE98727F44C7600D47744 /* Lab5CollectionRouterIO.swift in Sources */,
+				668BE98727F44C7600D47744 /* Lab5CollectionRouterInput.swift in Sources */,
 				66C7B60627F3971D00633214 /* Lab5CollectionInteractor.swift in Sources */,
 				668BE97827F4361200D47744 /* Lab5StuffViewController.swift in Sources */,
 				7844CB9427C1A72600B4A094 /* BooleanConverter.swift in Sources */,

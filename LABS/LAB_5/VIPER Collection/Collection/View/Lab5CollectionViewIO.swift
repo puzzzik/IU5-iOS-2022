@@ -6,7 +6,10 @@
 //
 
 import Foundation
-protocol Lab5CollectionViewIO: AnyObject {
-	
-	var presenter: Lab5CollectionPresenterIO! { get set }
+protocol Lab5CollectionViewInput: AnyObject {}
+
+protocol Lab5CollectionViewOutput: AnyObject {
+	func giveDataToCell(cell: Lab5CollectionViewCell, index: Int)
+	func numberOfCells() -> Int
+	func userDidSelect()
 }

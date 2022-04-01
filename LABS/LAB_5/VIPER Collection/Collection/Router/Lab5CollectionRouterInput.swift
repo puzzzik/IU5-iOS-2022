@@ -7,8 +7,6 @@
 
 import Foundation
 
-protocol Lab5CollectionRouterIO: AnyObject {
-	var presenter: Lab5CollectionPresenterIO? { get set }
-	
+protocol Lab5CollectionRouterInput: AnyObject {
 	func showDatePicker()
 }

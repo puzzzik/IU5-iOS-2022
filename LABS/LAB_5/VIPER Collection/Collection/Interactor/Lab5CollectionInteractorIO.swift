@@ -7,9 +7,8 @@
 
 import Foundation
 
-protocol Lab5CollectionInteractorIO {
-	
-	var presenter: Lab5CollectionPresenterIO? { get set }
-	
+protocol Lab5CollectionInteractorInput: AnyObject {
 	func getData() -> [Lab5CollectionViewCellData]
 }
+
+protocol Lab5CollectionInteractorOutput: AnyObject {}

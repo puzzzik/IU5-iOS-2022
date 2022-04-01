@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol Lab5StuffModuleInput: AnyObject {
-	
-}
+protocol Lab5StuffModuleInput: AnyObject {}
 
-protocol Lab5StuffModuleOutput: AnyObject {
-	
-}
+protocol Lab5StuffModuleOutput: AnyObject {}

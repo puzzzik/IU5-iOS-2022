@@ -34,10 +34,11 @@ class Lab5CollectionViewHeaderFooter: UICollectionReusableView {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		titleLabel.frame = CGRect(x: Constants.titleX,
-								  y: Constants.titleY,
-								  width: frame.width,
-								  height: frame.height)
+		                          y: Constants.titleY,
+		                          width: frame.width,
+		                          height: frame.height)
 	}
+
 	func cofigure(text: String, color: UIColor) {
 		titleLabel.text = text
 		backgroundColor = color

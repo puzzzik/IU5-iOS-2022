@@ -30,17 +30,17 @@ class Lab5CollectionViewCell: UICollectionViewCell {
 	
 	override func layoutSubviews() {
 		imageView.frame = CGRect(x: 10,
-								 y: 10,
-								 width: 40,
-								 height: 40)
+		                         y: 10,
+		                         width: 40,
+		                         height: 40)
 		titleLabel.frame = CGRect(x: imageView.frame.maxX + 5,
-								  y: 10,
-								  width: contentView.frame.width,
-								  height: 20)
+		                          y: 10,
+		                          width: contentView.frame.width,
+		                          height: 20)
 		subtitleLabel.frame = CGRect(x: imageView.frame.maxX + 5,
-									 y: titleLabel.frame.maxY + 10,
-									 width: contentView.frame.width,
-									 height: 15)
+		                             y: titleLabel.frame.maxY + 10,
+		                             width: contentView.frame.width,
+		                             height: 15)
 	}
 	
 	func configure(image: UIImage?, title: String?, subtitle: String?) {
@@ -76,4 +76,3 @@ class Lab5CollectionViewCell: UICollectionViewCell {
 		imageView.image = image
 	}
 }
-

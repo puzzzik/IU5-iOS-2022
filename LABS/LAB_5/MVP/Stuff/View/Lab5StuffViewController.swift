@@ -170,6 +170,4 @@ final class Lab5StuffViewController: UIViewController {
 	}
 }
 
-extension Lab5StuffViewController: Lab5StuffViewInput {
-	
-}
+extension Lab5StuffViewController: Lab5StuffViewInput {}

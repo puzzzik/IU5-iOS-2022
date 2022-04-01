@@ -8,11 +8,10 @@
 import Foundation
 import UIKit
 final class Lab5CollectionInteractor {
-	
-	weak var presenter: Lab5CollectionPresenterIO?
+	weak var output: Lab5CollectionInteractorOutput!
 }
 
-extension Lab5CollectionInteractor: Lab5CollectionInteractorIO {
+extension Lab5CollectionInteractor: Lab5CollectionInteractorInput {
 	func getData() -> [Lab5CollectionViewCellData] {
 		let data: [Lab5CollectionViewCellData] = [
 			Lab5CollectionViewCellData(

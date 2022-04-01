@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 final class Lab5CollectionRouter {
-	weak var presenter: Lab5CollectionPresenterIO?
-	weak var viewController: UIViewController?
+	weak var viewController: Lab5CollectionViewController?
+
+	init(viewController: Lab5CollectionViewController) {
+		self.viewController = viewController
+	}
 }
 
-extension Lab5CollectionRouter: Lab5CollectionRouterIO {
-	
+extension Lab5CollectionRouter: Lab5CollectionRouterInput {
 	func showDatePicker() {
 		let viewController = Lab5DateViewController()
 		self.viewController?.present(viewController, animated: true)

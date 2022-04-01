@@ -11,12 +11,13 @@ import UIKit
 final class Lab5TableViewController: UIViewController {
 	private var tableView: UITableView = .init(frame: CGRect.zero, style: .grouped)
 
-    var output: Lab5TableViewOutput!
+	var output: Lab5TableViewOutput!
 
 	private enum Constants {
 		static let rowHeight: CGFloat = 60
 		static let headerHeight: CGFloat = 50
 	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupTableViewController()
@@ -52,12 +53,12 @@ final class Lab5TableViewController: UIViewController {
 	
 	private func registerHeader() {
 		tableView.register(Lab5TableViewHeaderFooterView.self,
-						   forHeaderFooterViewReuseIdentifier: "HeaderView")
+		                   forHeaderFooterViewReuseIdentifier: "HeaderView")
 	}
 	
 	private func registerFooter() {
 		tableView.register(Lab5TableViewHeaderFooterView.self,
-						   forHeaderFooterViewReuseIdentifier: "FooterView")
+		                   forHeaderFooterViewReuseIdentifier: "FooterView")
 	}
 }
 
@@ -75,13 +76,13 @@ extension Lab5TableViewController: UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView,
-				   viewForHeaderInSection section: Int) -> UIView?
+	               viewForHeaderInSection section: Int) -> UIView?
 	{
 		output.setHeader(tableView, viewForHeaderInSection: section)
 	}
 	
 	func tableView(_ tableView: UITableView,
-				   viewForFooterInSection section: Int) -> UIView?
+	               viewForFooterInSection section: Int) -> UIView?
 	{
 		output.setFooter(tableView, viewForFooterInSection: section)
 	}
@@ -102,4 +103,3 @@ extension Lab5TableViewController: UITableViewDataSource {
 }
 
 extension Lab5TableViewController: Lab5TableViewInput {}
-

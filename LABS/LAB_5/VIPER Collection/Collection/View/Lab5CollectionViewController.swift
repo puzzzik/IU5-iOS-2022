@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 final class Lab5CollectionViewController: UIViewController {
-	
-	var presenter: Lab5CollectionPresenterIO!
+	var output: Lab5CollectionViewOutput!
 	
 	private enum Constants {
 		static let headerHeight: CGFloat = 20
@@ -36,6 +35,7 @@ final class Lab5CollectionViewController: UIViewController {
 		collectionView.register(Lab5CollectionViewHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
 		collectionView.register(Lab5CollectionViewHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
 	}
+
 	private func registerCell() {
 		collectionView.register(Lab5CollectionViewCell.self, forCellWithReuseIdentifier: "Lab5CollectionViewCell")
 	}
@@ -60,39 +60,43 @@ final class Lab5CollectionViewController: UIViewController {
 			collectionView.leadingAnchor.constraint(
 				equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 		])
-		
 	}
-	
 }
 
 extension Lab5CollectionViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView,
-						didSelectItemAt indexPath: IndexPath) {
-		presenter.userDidSelect()
+	                    didSelectItemAt indexPath: IndexPath)
+	{
+		output.userDidSelect()
 	}
 }
 
 extension Lab5CollectionViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView,
-						numberOfItemsInSection section: Int) -> Int {
-		presenter.numberOfCells()
+	                    numberOfItemsInSection section: Int) -> Int
+	{
+		output.numberOfCells()
 	}
 	
 	func collectionView(_ collectionView: UICollectionView,
-						cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+	                    cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+	{
 		guard let cell = collectionView.dequeueReusableCell(
 			withReuseIdentifier: "Lab5CollectionViewCell",
-			for: indexPath) as? Lab5CollectionViewCell else {
-				return UICollectionViewCell()
-			}
-		presenter.giveDataToCell(cell: cell, index: indexPath.row)
+			for: indexPath) as? Lab5CollectionViewCell
+		else {
+			return UICollectionViewCell()
+		}
+		output.giveDataToCell(cell: cell, index: indexPath.row)
 
 		cell.backgroundColor = Constants.cellBackgroundColor
 		return cell
 	}
+
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		1
 	}
+
 	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		if kind == UICollectionView.elementKindSectionFooter {
 			let footer = collectionView.dequeueReusableSupplementaryView(
@@ -102,29 +106,28 @@ extension Lab5CollectionViewController: UICollectionViewDataSource {
 			footer.cofigure(text: "Футер", color: .systemBackground)
 			return footer
 		} else {
-			
 			let header = collectionView.dequeueReusableSupplementaryView(
 				ofKind: UICollectionView.elementKindSectionHeader,
 				withReuseIdentifier: "Header",
 				for: indexPath) as! Lab5CollectionViewHeaderFooter
 			header.cofigure(text: "Хедер", color: .systemBackground)
 			return header
-			
 		}
 	}
 }
 
 extension Lab5CollectionViewController: UICollectionViewDelegateFlowLayout {
-	
 	func collectionView(_ collectionView: UICollectionView,
-						layout collectionViewLayout: UICollectionViewLayout,
-						insetForSectionAt section: Int) -> UIEdgeInsets {
+	                    layout collectionViewLayout: UICollectionViewLayout,
+	                    insetForSectionAt section: Int) -> UIEdgeInsets
+	{
 		return UIEdgeInsets(top: Constants.inset, left: Constants.inset, bottom: Constants.inset, right: Constants.inset)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView,
-						layout collectionViewLayout: UICollectionViewLayout,
-						sizeForItemAt indexPath: IndexPath) -> CGSize {
+	                    layout collectionViewLayout: UICollectionViewLayout,
+	                    sizeForItemAt indexPath: IndexPath) -> CGSize
+	{
 		return Constants.cellSize
 	}
 	
@@ -137,6 +140,4 @@ extension Lab5CollectionViewController: UICollectionViewDelegateFlowLayout {
 	}
 }
 
-extension Lab5CollectionViewController: Lab5CollectionViewIO {
-	
-}
+extension Lab5CollectionViewController: Lab5CollectionViewInput {}

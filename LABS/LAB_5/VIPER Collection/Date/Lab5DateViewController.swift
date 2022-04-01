@@ -18,10 +18,12 @@ class Lab5DateViewController: UIViewController {
 			static let y: CGFloat = 200
 			static let height: CGFloat = 20
 		}
+
 		enum datePickerFrame {
 			static let x: CGFloat = 30
 			static let height: CGFloat = 220
 		}
+
 		enum dateLabelFrame {
 			static let x: CGFloat = 0
 			static let height: CGFloat = 20
@@ -47,18 +49,18 @@ class Lab5DateViewController: UIViewController {
 	
 	private func layoutSubviews() {
 		titleLabel.frame = CGRect(x: Constants.titleFrame.x,
-								  y: Constants.titleFrame.y,
-								  width: view.frame.width,
-								  height: Constants.titleFrame.height)
+		                          y: Constants.titleFrame.y,
+		                          width: view.frame.width,
+		                          height: Constants.titleFrame.height)
 		
 		datePicker.frame = CGRect(x: Constants.datePickerFrame.x,
-								  y: titleLabel.frame.maxY + 50,
-								  width: view.frame.width,
-								  height: Constants.datePickerFrame.height)
+		                          y: titleLabel.frame.maxY + 50,
+		                          width: view.frame.width,
+		                          height: Constants.datePickerFrame.height)
 		dateLabel.frame = CGRect(x: Constants.dateLabelFrame.x,
-								 y: datePicker.frame.maxY + 60,
-								 width: view.frame.width,
-								 height: Constants.dateLabelFrame.height)
+		                         y: datePicker.frame.maxY + 60,
+		                         width: view.frame.width,
+		                         height: Constants.dateLabelFrame.height)
 	}
 	
 	private func setupTitle() {
