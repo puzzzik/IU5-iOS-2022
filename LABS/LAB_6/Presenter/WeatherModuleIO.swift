@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol WeatherModuleOutput: AnyObject {}
+
+protocol WeatherModuleInput: AnyObject {}

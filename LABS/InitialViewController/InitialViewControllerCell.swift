@@ -13,7 +13,6 @@ class InitialViewControllerCell: UITableViewCell {
 	private enum labelConstraints {
 		static let x: CGFloat = 8
 		static let y: CGFloat = 8
-
 	}
     
 	required init?(coder aDecoder: NSCoder) {
@@ -33,7 +32,7 @@ class InitialViewControllerCell: UITableViewCell {
 
 	override func layoutSubviews() {
 		nameLabel.frame = CGRect(x: labelConstraints.x,
-								 y: labelConstraints.y,
+		                         y: labelConstraints.y,
 		                         width: frame.width - 16,
 		                         height: frame.height - 16)
 	}

@@ -42,5 +42,3 @@ extension Lab5CollectionPresenter: Lab5CollectionViewOutput {
 extension Lab5CollectionPresenter: Lab5CollectionInteractorOutput {}
 
 extension Lab5CollectionPresenter: Lab5CollectionModuleInput {}
-
-extension Lab5CollectionPresenter: Lab5CollectionRouterOutput {}

@@ -16,6 +16,7 @@ final class InitialViewController: UIViewController {
 		case lab3 = "Лабораторная работа №3"
 		case lab4 = "Лабораторная работа №4"
 		case lab5 = "Лабораторная работа №5"
+		case lab6 = "Лабораторная работа №6"
 	}
 
 	override func viewDidLoad() {
@@ -69,6 +70,10 @@ extension InitialViewController: UITableViewDelegate {
 			navigationController?.pushViewController(viewController, animated: true)
 		} else if indexPath.row == 2 {
 			let viewController = Lab5ViewController()
+			navigationController?.pushViewController(viewController, animated: true)
+		} else if indexPath.row == 3 {
+			let builder = WeatherBuilder()
+			let viewController = builder.build()
 			navigationController?.pushViewController(viewController, animated: true)
 		}
 	}
