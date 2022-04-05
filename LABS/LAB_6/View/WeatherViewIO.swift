@@ -8,9 +8,13 @@
 import Foundation
 import UIKit
 
+// MARK: - WeatherViewInput
+
 protocol WeatherViewInput: AnyObject {
 	func reload()
 }
+
+// MARK: - WeatherViewOutput
 
 protocol WeatherViewOutput: AnyObject {
 	func cellForRow(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// MARK: - WeatherViewController
+
 class WeatherViewController: UIViewController {
 	private let tableView = UITableView(frame: .zero, style: .grouped)
 
@@ -65,7 +67,11 @@ class WeatherViewController: UIViewController {
 	}
 }
 
+// MARK: UITableViewDelegate
+
 extension WeatherViewController: UITableViewDelegate {}
+
+// MARK: UITableViewDataSource
 
 extension WeatherViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,6 +103,8 @@ extension WeatherViewController: UITableViewDataSource {
 		Constants.cellHeight
 	}
 }
+
+// MARK: WeatherViewInput
 
 extension WeatherViewController: WeatherViewInput {
 	func reload() {

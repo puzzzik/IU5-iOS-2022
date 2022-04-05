@@ -7,9 +7,13 @@
 
 import Foundation
 
+// MARK: - NetworkServiceProtocol
+
 protocol NetworkServiceProtocol: AnyObject {
 	func sendRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void)
 }
+
+// MARK: - NetworkService
 
 final class NetworkService: NetworkServiceProtocol {
 	private let session: URLSession

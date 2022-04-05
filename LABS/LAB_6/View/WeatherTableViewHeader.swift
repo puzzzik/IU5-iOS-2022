@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// MARK: - WeatherTableViewHeader
+
 final class WeatherTableViewHeader: UITableViewHeaderFooterView {
 	private let textField = UITextField()
 	
@@ -55,6 +57,8 @@ final class WeatherTableViewHeader: UITableViewHeaderFooterView {
 		textField.placeholder = "Введите город"
 	}
 }
+
+// MARK: UITextFieldDelegate
 
 extension WeatherTableViewHeader: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
