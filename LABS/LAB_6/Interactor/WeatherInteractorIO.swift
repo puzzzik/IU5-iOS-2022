@@ -7,14 +7,11 @@
 
 import Foundation
 
-// MARK: - WeatherInteractorInput
-
 protocol WeatherInteractorInput: AnyObject {
-	func setCityName(cityName: String)
+    func loadDataForCity(cityName: String)
+    func loadData()
 }
 
-// MARK: - WeatherInteractorOutput
-
 protocol WeatherInteractorOutput: AnyObject {
-	func setWeatherForecast(forecast: WeatherForecast)
+    func setWeatherForecast(forecast: WeatherForecast)
 }

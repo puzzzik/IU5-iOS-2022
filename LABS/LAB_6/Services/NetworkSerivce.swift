@@ -10,35 +10,43 @@ import Foundation
 // MARK: - NetworkServiceProtocol
 
 protocol NetworkServiceProtocol: AnyObject {
-	func sendRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void)
+    func sendRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void)
 }
 
 // MARK: - NetworkService
 
 final class NetworkService: NetworkServiceProtocol {
-	private let session: URLSession
+    // MARK: Lifecycle
 
-	init(session: URLSession) {
-		self.session = session
-	}
+    init(session: URLSession) {
+        self.session = session
+    }
 
-	func sendRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
-		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-			self?.session.dataTask(with: request) { data, response, error in
-				if let error = error {
-					completion(.failure(error))
-					return
-				}
-				guard
-					let response = response as? HTTPURLResponse,
-					response.statusCode == 200
-				else {
-					return
-				}
-				if let data = data {
-					completion(.success(data))
-				}
-			}.resume()
-		}
-	}
+    // MARK: Internal
+
+    func sendRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
+        session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+                return
+            }
+            guard
+                let response = response as? HTTPURLResponse,
+                response.statusCode == 200
+            else {
+                return
+            }
+            if let data = data {
+                DispatchQueue.main.async {
+                    completion(.success(data))
+                }
+            }
+        }.resume()
+    }
+
+    // MARK: Private
+
+    private let session: URLSession
 }

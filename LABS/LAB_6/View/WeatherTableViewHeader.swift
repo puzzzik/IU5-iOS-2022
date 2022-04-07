@@ -10,61 +10,71 @@ import UIKit
 
 // MARK: - WeatherTableViewHeader
 
-final class WeatherTableViewHeader: UITableViewHeaderFooterView {
-	private let textField = UITextField()
-	
-	private enum Constants {
-		enum textField {
-			static let x: CGFloat = 35
-			static let y: CGFloat = 10
-			static let width: CGFloat = 70
-			static let height: CGFloat = 30
-		}
-	}
+final class WeatherTableViewHeader: UIView {
+    // MARK: Lifecycle
 
-	override init(reuseIdentifier: String?) {
-		super.init(reuseIdentifier: reuseIdentifier)
-		setupViews()
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		setupViews()
-	}
-	
-	override func prepareForReuse() {
-		super.prepareForReuse()
-	}
-	
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		textField.frame = CGRect(x: Constants.textField.x,
-		                         y: Constants.textField.y,
-		                         width: contentView.frame.width - Constants.textField.width,
-		                         height: Constants.textField.height)
-	}
-	
-	private func setupViews() {
-		contentView.addSubview(textField)
-		setupTextField()
-	}
-	
-	private func setupTextField() {
-		textField.delegate = self
-		textField.borderStyle = .roundedRect
-		textField.textAlignment = .center
-		textField.center = contentView.center
-		textField.placeholder = "Введите город"
-	}
+//    override init(reuseIdentifier: String?) {
+//        super.init(reuseIdentifier: reuseIdentifier)
+//        setupViews()
+//    }
+//
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupViews()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setupViews()
+    }
+
+    // MARK: Internal
+
+    struct DisplayData {
+        let placeholderText: String
+        let action: ((String?) -> Void)?
+    }
+
+    func configure(displayData: DisplayData) {
+        textField.placeholder = displayData.placeholderText
+        action = displayData.action
+    }
+
+    // MARK: Private
+
+    private enum Constants {
+        static let leadingOffset: CGFloat = 35
+    }
+
+    private var action: ((String?) -> Void)?
+    private let textField = UITextField(frame: .zero)
+
+    private func setupViews() {
+        addSubview(textField)
+        setupTextField()
+    }
+
+    private func setupTextField() {
+        textField.delegate = self
+        textField.borderStyle = .roundedRect
+        textField.textAlignment = .center
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints([
+            textField.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            textField.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            textField.widthAnchor.constraint(equalTo: widthAnchor, constant: -Constants.leadingOffset*2)
+            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.leadingOffset),
+            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.leadingOffset),
+        ])
+    }
 }
 
 // MARK: UITextFieldDelegate
 
 extension WeatherTableViewHeader: UITextFieldDelegate {
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-		NotificationCenter.default.post(name: NSNotification.Name("textFieldDidEditingEnd"),
-		                                object: textField.text)
-		return true
-	}
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        action?(textField.text)
+        return true
+    }
 }

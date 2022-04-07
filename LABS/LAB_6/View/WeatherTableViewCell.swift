@@ -8,63 +8,78 @@
 import Foundation
 import UIKit
 
+// MARK: - WeatherTableViewCell
+
 final class WeatherTableViewCell: UITableViewCell {
-	private let propertyNameLabel = UILabel()
-	private let propertyResultLabel = UILabel()
-	
-	private enum FrameSizes {
-		enum propertyName {
-			static let x: CGFloat = 20
-			static let y: CGFloat = 1
-			static let width: CGFloat = 160
-			static let height: CGFloat = 48
-		}
-		
-		enum propertyResult {
-			static let x: CGFloat = 30
-			static let y: CGFloat = 1
-			static let height: CGFloat = 48
-		}
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		setupViews()
-	}
-	
-	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		setupViews()
-	}
-	
-	override func prepareForReuse() {
-		super.prepareForReuse()
-		propertyNameLabel.text = ""
-	}
-	
-	override func layoutSubviews() {
-		propertyNameLabel.frame = CGRect(x: FrameSizes.propertyName.x,
-		                                 y: FrameSizes.propertyName.y,
-		                                 width: FrameSizes.propertyName.width,
-		                                 height: FrameSizes.propertyName.height)
-		propertyResultLabel.frame = CGRect(x: propertyNameLabel.frame.maxX + FrameSizes.propertyResult.x,
-		                                   y: FrameSizes.propertyResult.y,
-		                                   width: frame.width - propertyNameLabel.frame.maxX - 50,
-		                                   height: FrameSizes.propertyResult.height)
-	}
-	
-	private func setupViews() {
-		addSubview(propertyNameLabel)
-		addSubview(propertyResultLabel)
-		propertyResultLabel.lineBreakMode = .byWordWrapping
-		propertyResultLabel.numberOfLines = 2
-	}
-	
-	func configure(propertyName: String, propertyResult: String?) {
-		propertyNameLabel.text = propertyName
-		guard propertyResult != nil else {
-			return
-		}
-		propertyResultLabel.text = propertyResult
-	}
+    // MARK: Lifecycle
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupViews()
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        contentLabel.text = nil
+    }
+
+    // MARK: Internal
+
+    struct DisplayData {
+        let title: String
+        let content: String
+    }
+
+    func configure(with displayData: DisplayData) {
+        titleLabel.text = displayData.title
+        contentLabel.text = displayData.content
+    }
+
+    // MARK: Private
+
+    private enum Constants {
+        static let topOffset: CGFloat = 15
+        static let leadingOffset: CGFloat = 20
+        static let interitemSpace: CGFloat = 150
+    }
+
+    private let titleLabel = UILabel()
+    private let contentLabel = UILabel()
+
+    private func setupViews() {
+        addSubview(contentLabel)
+        contentLabel.lineBreakMode = .byWordWrapping
+        setupTitleLabel()
+        setupContentLabel()
+    }
+
+    private func setupTitleLabel() {
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints([
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                            constant: Constants.topOffset),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+                                                constant: Constants.leadingOffset),
+        ])
+        titleLabel.font = .systemFont(ofSize: 15)
+    }
+
+    private func setupContentLabel() {
+        addSubview(contentLabel)
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints([
+            contentLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                              constant: Constants.topOffset),
+            contentLabel.leadingAnchor.constraint(lessThanOrEqualTo: trailingAnchor,
+                                                  constant: -Constants.interitemSpace),
+        ])
+        contentLabel.font = .systemFont(ofSize: 15)
+    }
 }

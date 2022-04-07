@@ -6,18 +6,19 @@
 //
 
 import Foundation
-import UIKit
 
 // MARK: - WeatherViewInput
 
 protocol WeatherViewInput: AnyObject {
-	func reload()
+    func reload()
 }
 
 // MARK: - WeatherViewOutput
 
 protocol WeatherViewOutput: AnyObject {
-	func cellForRow(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-	func numberOfRowsInSection() -> Int
-	func numberOfSections() -> Int
+    func displayData(for indexPath: IndexPath) -> WeatherTableViewCell.DisplayData
+    func displayDataForHeader() -> WeatherTableViewHeader.DisplayData
+    func numberOfRowsInSection(inSection section: Int) -> Int
+    func numberOfSections() -> Int
+    func viewDidLoad()
 }

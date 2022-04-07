@@ -11,105 +11,104 @@ import UIKit
 // MARK: - WeatherViewController
 
 class WeatherViewController: UIViewController {
-	private let tableView = UITableView(frame: .zero, style: .grouped)
+    // MARK: Internal
 
-	var output: WeatherViewOutput!
+    var output: WeatherViewOutput!
 
-	var textFieldText: String?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+        setupHeader()
+        setupTable()
+        registerCell()
+        output.viewDidLoad()
+    }
 
-	private enum Constants {
-		enum tableConstraints {
-			static let topAnchor: CGFloat = 40
-			static let bottomAnchor: CGFloat = -100
-		}
+    // MARK: Private
 
-		static let headerHeight: CGFloat = 50
-		static let cellHeight: CGFloat = 50
-	}
+    private enum Constants {
+        static let headerHeight: CGFloat = 50
+        static let cellHeight: CGFloat = 50
+    }
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupView()
-		setupTable()
-		registerCell()
-		registerHeader()
-	}
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let headerView = WeatherTableViewHeader(frame: .zero)
 
-	private func setupView() {
-		view.addSubview(tableView)
-		tableView.backgroundColor = .systemBackground
-		tableView.translatesAutoresizingMaskIntoConstraints = false
-		view.addConstraints([
-			tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-			                               constant: Constants.tableConstraints.topAnchor),
-			tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-			                                  constant: Constants.tableConstraints.bottomAnchor),
-		])
-	}
+    private func setupView() {
+        title = "Weather Forecast"
+        view.backgroundColor = .systemBackground
 
-	private func setupTable() {
-		title = "Погода"
-		tableView.dataSource = self
-		tableView.delegate = self
-		tableView.allowsSelection = false
-	}
+    }
 
-	private func registerCell() {
-		tableView.register(WeatherTableViewCell.self,
-		                   forCellReuseIdentifier: "WeatherTableViewCell")
-	}
+    private func setupTable() {
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.allowsSelection = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints([
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
 
-	private func registerHeader() {
-		tableView.register(WeatherTableViewHeader.self,
-		                   forHeaderFooterViewReuseIdentifier: "WeatherTableViewHeader")
-	}
+    private func registerCell() {
+        tableView.register(WeatherTableViewCell.self,
+                           forCellReuseIdentifier: "WeatherTableViewCell")
+    }
+
+    private func setupHeader() {
+        view.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints([
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            headerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                               constant: Constants.headerHeight),
+        ])
+        let displayData = output.displayDataForHeader()
+        headerView.configure(displayData: displayData)
+    }
 }
 
 // MARK: UITableViewDelegate
 
-extension WeatherViewController: UITableViewDelegate {}
+extension WeatherViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        Constants.cellHeight
+    }
+}
 
 // MARK: UITableViewDataSource
 
 extension WeatherViewController: UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		output.numberOfRowsInSection()
-	}
+    func numberOfSections(in tableView: UITableView) -> Int {
+        output.numberOfSections()
+    }
 
-	func numberOfSections(in tableView: UITableView) -> Int {
-		output.numberOfSections()
-	}
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        output.numberOfRowsInSection(inSection: section)
+    }
 
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return output.cellForRow(tableView, cellForRowAt: indexPath)
-	}
-
-	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		guard let header = tableView.dequeueReusableHeaderFooterView(
-			withIdentifier: "WeatherTableViewHeader") as? WeatherTableViewHeader
-		else {
-			return UIView()
-		}
-		return header
-	}
-
-	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		Constants.headerHeight
-	}
-
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		Constants.cellHeight
-	}
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell",
+                                                       for: indexPath) as? WeatherTableViewCell
+        else {
+            return UITableViewCell()
+        }
+        let displayData = output.displayData(for: indexPath)
+        cell.configure(with: displayData)
+        return cell
+    }
 }
 
 // MARK: WeatherViewInput
 
 extension WeatherViewController: WeatherViewInput {
-	func reload() {
-		DispatchQueue.main.async { [weak self] in
-			self?.tableView.reloadData()
-		}
-	}
+    func reload() {
+        tableView.reloadData()
+    }
 }

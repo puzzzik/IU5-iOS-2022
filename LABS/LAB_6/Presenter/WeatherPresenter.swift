@@ -6,80 +6,72 @@
 //
 
 import Foundation
-import UIKit
+
+// MARK: - WeatherPresenter
 
 final class WeatherPresenter {
-	weak var view: WeatherViewInput!
-	weak var moduleOutput: WeatherModuleOutput!
+    // MARK: Lifecycle
 
-	private let propertyNames = [
-		0: "Условия",
-		1: "Температура",
-		2: "Мин. температура",
-		3: "Макс. температура",
-		4: "Ощущается как",
-		5: "Видимость",
-		6: "Восход",
-		7: "Закат",
-		8: "Город",
-		9: "Страна",
-	]
-	private var propertyResults: [Int: String] = [:]
+    init(interactor: WeatherInteractorInput, weatherDataDisplayFactory: WeatherDisplayDataFactory) {
+        self.interactor = interactor
+        self.weatherDisplayDataFactory = weatherDataDisplayFactory
+    }
 
-	var interactor: WeatherInteractorInput!
+    // MARK: Internal
 
-	init(interactor: WeatherInteractorInput) {
-		self.interactor = interactor
-		NotificationCenter.default.addObserver(self, selector: #selector(getCityName), name: NSNotification.Name("textFieldDidEditingEnd"), object: nil)
-	}
+    weak var view: WeatherViewInput!
+    weak var moduleOutput: WeatherModuleOutput!
+    var interactor: WeatherInteractorInput!
 
-	@objc func getCityName(_ notification: Notification) {
-		guard let cityName = notification.object as? String else {
-			print("NO CITY ENTERED")
-			return
-		}
-		let trimmedCityName = cityName.trimmingCharacters(in: .whitespacesAndNewlines)
-		interactor.setCityName(cityName: trimmedCityName)
-		NotificationCenter.default.post(name: NSNotification.Name("userDidTypedCityName"), object: nil)
-	}
+    // MARK: Private
+
+    private let weatherDisplayDataFactory: WeatherDisplayDataFactoryProtocol
+    private var forecast: WeatherForecast?
+    private let tableHeaderPlaceholderText = "Введите город"
 }
+
+// MARK: WeatherViewOutput
 
 extension WeatherPresenter: WeatherViewOutput {
-	func numberOfSections() -> Int {
-		1
-	}
+    func viewDidLoad() {
+        interactor.loadData()
+    }
 
-	func cellForRow(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell") as? WeatherTableViewCell else {
-			return UITableViewCell()
-		}
-		cell.configure(propertyName: propertyNames[indexPath.row]!,
-		               propertyResult: propertyResults[indexPath.row])
-		return cell
-	}
+    func displayData(for indexPath: IndexPath) -> WeatherTableViewCell.DisplayData {
+        return weatherDisplayDataFactory.displayData(for: indexPath, from: forecast)
+    }
 
-	func numberOfRowsInSection() -> Int {
-		propertyNames.count
-	}
+    func numberOfSections() -> Int {
+        WeatherSection.allCases.count
+    }
+
+    func numberOfRowsInSection(inSection section: Int) -> Int {
+        guard let section = WeatherSection(rawValue: section) else {
+            assertionFailure("Unrecognized section with index \(section)")
+            return 0
+        }
+        return section.numberOfItems
+    }
+
+    func displayDataForHeader() -> WeatherTableViewHeader.DisplayData {
+        let displayData = weatherDisplayDataFactory.tableHeaderDisplayData(with: tableHeaderPlaceholderText) { [weak self] cityName in
+            self?.interactor.loadDataForCity(cityName: cityName ?? "")
+        }
+        return displayData
+
+    }
 }
 
-extension WeatherPresenter: WeatherModuleInput {}
+// MARK: WeatherModuleInput
+
+extension WeatherPresenter: WeatherModuleInput {
+}
+
+// MARK: WeatherInteractorOutput
 
 extension WeatherPresenter: WeatherInteractorOutput {
-	func setWeatherForecast(forecast: WeatherForecast) {
-		propertyResults[0] = String(forecast.data[0].description)
-		propertyResults[1] = String(forecast.weatherMain.temp)
-		propertyResults[2] = String(forecast.weatherMain.tempMin)
-		propertyResults[3] = String(forecast.weatherMain.tempMax)
-		propertyResults[4] = String(forecast.weatherMain.feelsLike)
-		propertyResults[5] = String(forecast.visibility)
-		propertyResults[6] = forecast.system.sunrise.formatted(date: .omitted,
-		                                                       time: .shortened)
-		propertyResults[7] = forecast.system.sunset.formatted(date: .omitted,
-		                                                      time: .shortened)
-		propertyResults[8] = forecast.cityName
-		propertyResults[9] = forecast.system.country
-
-		view.reload()
-	}
+    func setWeatherForecast(forecast: WeatherForecast) {
+        self.forecast = forecast
+        view.reload()
+    }
 }

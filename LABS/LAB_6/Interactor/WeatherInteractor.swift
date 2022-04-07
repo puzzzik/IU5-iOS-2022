@@ -10,47 +10,65 @@ import Foundation
 // MARK: - WeatherInteractor
 
 final class WeatherInteractor {
-    weak var output: WeatherInteractorOutput!
-
-    var requestFactory: NetworkRequestFactoryProtocol!
-    var networkService: NetworkServiceProtocol!
-
-    var cityName: String = ""
+    // MARK: Lifecycle
 
     init(requestFactory: NetworkRequestFactoryProtocol, networkService: NetworkServiceProtocol) {
         self.requestFactory = requestFactory
         self.networkService = networkService
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(getWeather),
-                                               name: NSNotification.Name("userDidTypedCityName"),
-                                               object: nil)
     }
 
-    @objc private func getWeather() {
-        let request = requestFactory.getWeatherRequestForCurrentLocation(cityName: cityName)
-        networkService.sendRequest(request) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print("Error: \(error)")
+    // MARK: Internal
 
-            case .success(let data):
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let forecast = try decoder.decode(WeatherForecast.self, from: data)
-                    self?.output.setWeatherForecast(forecast: forecast)
-                } catch {
-                    assertionFailure("\(error)")
-                }
-            }
-        }
-    }
+    weak var output: WeatherInteractorOutput!
+
+    // MARK: Private
+
+    private let requestFactory: NetworkRequestFactoryProtocol!
+    private let networkService: NetworkServiceProtocol!
 }
 
 // MARK: WeatherInteractorInput
 
 extension WeatherInteractor: WeatherInteractorInput {
-    func setCityName(cityName: String) {
-        self.cityName = cityName
+    func loadData() {
+        let request = requestFactory.getWeatherRequestForCurrentLocation()
+        networkService.sendRequest(request) { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case let .failure(error):
+                assertionFailure("Error: \(error)")
+
+            case let .success(data):
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let forecast = try decoder.decode(WeatherForecast.self, from: data)
+                    strongSelf.output.setWeatherForecast(forecast: forecast)
+                } catch {
+                    assertionFailure("Error: \(error)")
+                }
+            }
+        }
+    }
+
+    func loadDataForCity(cityName: String) {
+        let request = requestFactory.getWeatherRequestForCity(cityName: cityName)
+        networkService.sendRequest(request) { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case let .failure(error):
+                assertionFailure("Error: \(error)")
+
+            case let .success(data):
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let forecast = try decoder.decode(WeatherForecast.self, from: data)
+                    strongSelf.output.setWeatherForecast(forecast: forecast)
+                } catch {
+                    assertionFailure("Error: \(error)")
+                }
+            }
+        }
     }
 }

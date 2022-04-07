@@ -13,7 +13,7 @@ struct WeatherForecast: Decodable {
 	let data: [WeatherData]
 	let visibility: Double
 	let cityName: String
-	
+
 	enum CodingKeys: String, CodingKey {
 		case weatherMain = "main"
 		case windData = "wind"
@@ -22,10 +22,10 @@ struct WeatherForecast: Decodable {
 		case visibility
 		case cityName = "name"
 	}
-	
+
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		weatherMain = try values.decode(WeatherMain.self, forKey: .weatherMain)
 		windData = try values.decode(WindData.self, forKey: .windData)
 		system = try values.decode(WeatherSystemData.self, forKey: .system)
