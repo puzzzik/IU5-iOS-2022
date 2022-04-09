@@ -24,4 +24,10 @@ struct WeatherSystemData: Decodable {
 		sunset = try values.decode(Date.self, forKey: .sunset)
 		sunrise = try values.decode(Date.self, forKey: .sunrise)
 	}
+
+    init(country: String, sunset: Date, sunrise: Date) {
+        self.sunset = sunset
+        self.sunrise = sunrise
+        self.country = country
+    }
 }
