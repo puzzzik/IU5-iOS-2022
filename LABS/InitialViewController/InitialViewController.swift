@@ -17,8 +17,6 @@ final class InitialViewController: UIViewController {
         super.viewDidLoad()
         setupTableViewController()
         setupTableViewConstraints()
-        locationManager = LocationManager()
-        locationManager.requestAuthorization()
     }
 
     // MARK: Private
