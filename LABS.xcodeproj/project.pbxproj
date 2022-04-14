@@ -404,7 +404,6 @@
 		66B0659127F8639A0016D2FF /* LAB_6 */ = {
 			isa = PBXGroup;
 			children = (
-				66495590280179B2008919D3 /* CoreData */,
 				66B065BE27F9B6C70016D2FF /* Interactor */,
 				66B065A927F8664A0016D2FF /* Presenter */,
 				66B065A827F866400016D2FF /* View */,
@@ -535,6 +534,14 @@
 			path = LAB_3;
 			sourceTree = "<group>";
 		};
+		66E05C392808988300C89A50 /* LAB_7 */ = {
+			isa = PBXGroup;
+			children = (
+				66495590280179B2008919D3 /* CoreData */,
+			);
+			path = LAB_7;
+			sourceTree = "<group>";
+		};
 		66F19DD327E737C300449D60 /* Table */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +578,7 @@
 				78052E9527BA89A700BB3916 /* Assets.xcassets */,
 				66C6D95527E4C30400E9FB68 /* AppDelegate.swift */,
 				660EBE5227F0FDC40063124C /* InitialViewController */,
+				66E05C392808988300C89A50 /* LAB_7 */,
 				66B0659127F8639A0016D2FF /* LAB_6 */,
 				660EBE7C27F10AAC0063124C /* LAB_5 */,
 				66C6D94027E4BFD100E9FB68 /* LAB_4 */,
