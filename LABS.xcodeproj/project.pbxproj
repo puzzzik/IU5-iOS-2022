@@ -311,7 +311,8 @@
 				66495591280179CD008919D3 /* Weather.xcdatamodeld */,
 				6649559428017D11008919D3 /* Converters */,
 			);
-			path = CoreData;
+			name = CoreData;
+			path = ../LAB_6/CoreData;
 			sourceTree = "<group>";
 		};
 		6649559428017D11008919D3 /* Converters */ = {
@@ -404,7 +405,6 @@
 		66B0659127F8639A0016D2FF /* LAB_6 */ = {
 			isa = PBXGroup;
 			children = (
-				66495590280179B2008919D3 /* CoreData */,
 				66B065BE27F9B6C70016D2FF /* Interactor */,
 				66B065A927F8664A0016D2FF /* Presenter */,
 				66B065A827F866400016D2FF /* View */,
