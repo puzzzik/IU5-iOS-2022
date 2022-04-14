@@ -26,4 +26,10 @@ struct WeatherSystemData: Decodable {
         let sunriseDate = try values.decode(TimeInterval.self, forKey: .sunrise)
         sunrise = Date(timeIntervalSince1970: sunriseDate)
     }
+
+    init(country: String, sunset: Date, sunrise: Date) {
+        self.country = country
+        self.sunset = sunset
+        self.sunrise = sunrise
+    }
 }
