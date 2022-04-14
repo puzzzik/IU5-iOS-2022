@@ -16,6 +16,10 @@ protocol NetworkServiceProtocol: AnyObject {
 // MARK: - NetworkService
 
 final class NetworkService: NetworkServiceProtocol {
+    // MARK: Private
+
+    private let session: URLSession
+
     // MARK: Lifecycle
 
     init(session: URLSession) {
@@ -45,8 +49,4 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }.resume()
     }
-
-    // MARK: Private
-
-    private let session: URLSession
 }

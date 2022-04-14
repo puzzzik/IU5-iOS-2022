@@ -11,6 +11,26 @@ import UIKit
 // MARK: - WeatherTableViewCell
 
 final class WeatherTableViewCell: UITableViewCell {
+    // MARK: Private Properties
+
+    private let titleLabel = UILabel()
+    private let contentLabel = UILabel()
+
+    // MARK: Private Data Struct
+
+    private enum Constants {
+        static let topOffset: CGFloat = 15
+        static let leadingOffset: CGFloat = 20
+        static let interitemSpace: CGFloat = 150
+    }
+
+    // MARK: Internal Data Struct
+
+    struct DisplayData {
+        let title: String
+        let content: String
+    }
+
     // MARK: Lifecycle
 
     required init?(coder aDecoder: NSCoder) {
@@ -29,28 +49,14 @@ final class WeatherTableViewCell: UITableViewCell {
         contentLabel.text = nil
     }
 
-    // MARK: Internal
-
-    struct DisplayData {
-        let title: String
-        let content: String
-    }
+    // MARK: Internal Methods
 
     func configure(with displayData: DisplayData) {
         titleLabel.text = displayData.title
         contentLabel.text = displayData.content
     }
 
-    // MARK: Private
-
-    private enum Constants {
-        static let topOffset: CGFloat = 15
-        static let leadingOffset: CGFloat = 20
-        static let interitemSpace: CGFloat = 150
-    }
-
-    private let titleLabel = UILabel()
-    private let contentLabel = UILabel()
+    // MARK: Private Methods
 
     private func setupViews() {
         addSubview(contentLabel)

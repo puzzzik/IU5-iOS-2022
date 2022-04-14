@@ -18,10 +18,23 @@ protocol NetworkRequestFactoryProtocol: AnyObject {
 // MARK: - NetworkRequestFactory
 
 final class NetworkRequestFactory: NetworkRequestFactoryProtocol {
+    // MARK: Private Properties
+
+    private let locationManager: LocationManagerProtocol
+
     // MARK: Lifecycle
 
     init(locationManager: LocationManagerProtocol) {
         self.locationManager = locationManager
+    }
+
+    // MARK: Private Data Struct
+
+    private enum Constants {
+        static let apiKey = "0d6eb8362cfe0622d5bc1b40279fb037"
+        static let baseURL = URL(string: "https://api.openweathermap.org/data/2.5")!
+        static let units = "metric"
+        static let language = "ru"
     }
 
     // MARK: Internal
@@ -57,15 +70,4 @@ final class NetworkRequestFactory: NetworkRequestFactoryProtocol {
         }
         return URLRequest(url: url)
     }
-
-    // MARK: Private
-
-    private enum Constants {
-        static let apiKey = "0d6eb8362cfe0622d5bc1b40279fb037"
-        static let baseURL = URL(string: "https://api.openweathermap.org/data/2.5")!
-        static let units = "metric"
-        static let language = "ru"
-    }
-
-    private let locationManager: LocationManagerProtocol
 }

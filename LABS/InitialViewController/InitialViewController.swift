@@ -11,15 +11,12 @@ import UIKit
 // MARK: - InitialViewController
 
 final class InitialViewController: UIViewController {
-    // MARK: Internal
+    // MARK: Private Properties
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableViewController()
-        setupTableViewConstraints()
-    }
+    private lazy var tableViewController: UITableView = .init(frame: CGRect.zero, style: .grouped)
+    private let tableInset = UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0)
 
-    // MARK: Private
+    // MARK: Private Data Struct
 
     private enum CellsDisplayData: String, CaseIterable {
         case lab3 = "Лабораторная работа №3"
@@ -28,10 +25,15 @@ final class InitialViewController: UIViewController {
         case lab6 = "Лабораторная работа №6"
     }
 
-    private lazy var tableViewController: UITableView = .init(frame: CGRect.zero, style: .grouped)
+    // MARK: Lifecycle
 
-    private let tableInset = UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0)
-    private var locationManager: LocationManagerProtocol!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableViewController()
+        setupTableViewConstraints()
+    }
+
+    // MARK: Private Methods
 
     private func setupTableViewConstraints() {
         tableViewController.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +102,9 @@ extension InitialViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableViewController.dequeueReusableCell(withIdentifier: "InitialViewControllerCell", for: indexPath) as? InitialViewControllerCell else {
+        guard let cell = tableViewController.dequeueReusableCell(withIdentifier: "InitialViewControllerCell",
+                                                                 for: indexPath) as? InitialViewControllerCell
+        else {
             return UITableViewCell()
         }
         cell.configure(text: CellsDisplayData.allCases[indexPath.row].rawValue)

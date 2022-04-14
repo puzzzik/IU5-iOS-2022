@@ -9,23 +9,23 @@ import Foundation
 import UIKit
 
 class WeatherBuilder {
-	func build() -> UIViewController {
-		let view = WeatherViewController()
+    func build() -> UIViewController {
+        let view = WeatherViewController()
         let locationManager = LocationManager()
         locationManager.requestAuthorization()
         let networkService = NetworkService(session: URLSession(configuration: .default))
 
-		let requestFactory = NetworkRequestFactory(locationManager: locationManager)
+        let requestFactory = NetworkRequestFactory(locationManager: locationManager)
 
-		let interactor = WeatherInteractor(requestFactory: requestFactory,
-		                                   networkService: networkService)
+        let interactor = WeatherInteractor(requestFactory: requestFactory,
+                                           networkService: networkService)
         let weatherDisplayDataFactory = WeatherDisplayDataFactory()
         let presenter = WeatherPresenter(interactor: interactor, weatherDataDisplayFactory: weatherDisplayDataFactory)
 
-		view.output = presenter
-		presenter.view = view
-		interactor.output = presenter
+        view.output = presenter
+        presenter.view = view
+        interactor.output = presenter
 
-		return view
-	}
+        return view
+    }
 }

@@ -8,41 +8,51 @@
 import UIKit
 
 class InitialViewControllerCell: UITableViewCell {
-	private let nameLabel = UILabel()
-	
-	private enum labelConstraints {
-		static let x: CGFloat = 8
-		static let y: CGFloat = 8
-	}
-    
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		setupViews()
-	}
-    
-	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		setupViews()
-	}
-    
-	override func prepareForReuse() {
-		super.prepareForReuse()
-		nameLabel.text = ""
-	}
+    // MARK: Private Properties
 
-	override func layoutSubviews() {
-		nameLabel.frame = CGRect(x: labelConstraints.x,
-		                         y: labelConstraints.y,
-		                         width: frame.width - 16,
-		                         height: frame.height - 16)
-	}
-    
-	private func setupViews() {
-		addSubview(nameLabel)
-		backgroundColor = .systemGray6
-	}
-    
-	func configure(text: String) {
-		nameLabel.text = text
-	}
+    private let nameLabel = UILabel()
+
+    // MARK: Private Data Struct
+
+    private enum labelConstraints {
+        static let x: CGFloat = 8
+        static let y: CGFloat = 8
+    }
+
+    // MARK: Lifecycle
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupViews()
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.text = ""
+    }
+
+    override func layoutSubviews() {
+        nameLabel.frame = CGRect(x: labelConstraints.x,
+                                 y: labelConstraints.y,
+                                 width: frame.width - 2 * labelConstraints.x,
+                                 height: frame.height - 2 * labelConstraints.y)
+    }
+
+    // MARK: Private Methods
+
+    private func setupViews() {
+        addSubview(nameLabel)
+        backgroundColor = .systemGray6
+    }
+
+    // MARK: Internal Methods
+
+    func configure(text: String) {
+        nameLabel.text = text
+    }
 }

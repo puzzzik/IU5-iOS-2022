@@ -18,6 +18,10 @@ protocol LocationManagerProtocol {
 // MARK: - LocationManager
 
 final class LocationManager: LocationManagerProtocol {
+    // MARK: Private
+
+    private let locationManager: CLLocationManager
+
     // MARK: Lifecycle
 
     init() {
@@ -38,8 +42,4 @@ final class LocationManager: LocationManagerProtocol {
         }
         return location
     }
-
-    // MARK: Private
-
-    private let locationManager: CLLocationManager
 }

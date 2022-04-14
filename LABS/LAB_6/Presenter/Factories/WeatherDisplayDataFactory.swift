@@ -32,7 +32,7 @@ enum WeatherSection: Int, CaseIterable {
 // MARK: - WeatherDisplayDataFactoryProtocol
 
 protocol WeatherDisplayDataFactoryProtocol {
-    func tableHeaderDisplayData(with placeholder: String, action: @escaping (String?) -> Void) -> WeatherTableViewHeader.DisplayData
+    func tableHeaderDisplayData(with placeholder: String, action: @escaping (String) -> Void) -> WeatherTableViewHeader.DisplayData
     func displayData(for indexPath: IndexPath,
                      from forecast: WeatherForecast?) -> WeatherTableViewCell.DisplayData
 }
@@ -40,12 +40,10 @@ protocol WeatherDisplayDataFactoryProtocol {
 // MARK: - WeatherDisplayDataFactory
 
 final class WeatherDisplayDataFactory: WeatherDisplayDataFactoryProtocol {
-    func tableHeaderDisplayData(with placeholder: String, action: @escaping (String?) -> Void) -> WeatherTableViewHeader.DisplayData {
+    func tableHeaderDisplayData(with placeholder: String, action: @escaping (String) -> Void) -> WeatherTableViewHeader.DisplayData {
         let dd = WeatherTableViewHeader.DisplayData(placeholderText: placeholder, action: action)
         return dd
     }
-
-
 
     func displayData(for indexPath: IndexPath, from forecast: WeatherForecast?) -> WeatherTableViewCell.DisplayData {
         guard let section = WeatherSection(rawValue: indexPath.section) else {

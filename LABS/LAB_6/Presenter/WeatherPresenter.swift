@@ -10,24 +10,24 @@ import Foundation
 // MARK: - WeatherPresenter
 
 final class WeatherPresenter {
-    // MARK: Lifecycle
+    // MARK: Private Properties
 
-    init(interactor: WeatherInteractorInput, weatherDataDisplayFactory: WeatherDisplayDataFactory) {
-        self.interactor = interactor
-        self.weatherDisplayDataFactory = weatherDataDisplayFactory
-    }
+    private let weatherDisplayDataFactory: WeatherDisplayDataFactoryProtocol
+    private var forecast: WeatherForecast?
+    private let tableHeaderPlaceholderText = "Введите город"
 
-    // MARK: Internal
+    // MARK: Internal Properties
 
     weak var view: WeatherViewInput!
     weak var moduleOutput: WeatherModuleOutput!
     var interactor: WeatherInteractorInput!
 
-    // MARK: Private
+    // MARK: Lifecycle
 
-    private let weatherDisplayDataFactory: WeatherDisplayDataFactoryProtocol
-    private var forecast: WeatherForecast?
-    private let tableHeaderPlaceholderText = "Введите город"
+    init(interactor: WeatherInteractorInput, weatherDataDisplayFactory: WeatherDisplayDataFactory) {
+        self.interactor = interactor
+        weatherDisplayDataFactory = weatherDataDisplayFactory
+    }
 }
 
 // MARK: WeatherViewOutput
@@ -55,10 +55,9 @@ extension WeatherPresenter: WeatherViewOutput {
 
     func displayDataForHeader() -> WeatherTableViewHeader.DisplayData {
         let displayData = weatherDisplayDataFactory.tableHeaderDisplayData(with: tableHeaderPlaceholderText) { [weak self] cityName in
-            self?.interactor.loadDataForCity(cityName: cityName ?? "")
+            self?.interactor.loadDataForCity(cityName: cityName)
         }
         return displayData
-
     }
 }
 

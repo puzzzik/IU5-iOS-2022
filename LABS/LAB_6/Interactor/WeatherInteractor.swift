@@ -10,21 +10,21 @@ import Foundation
 // MARK: - WeatherInteractor
 
 final class WeatherInteractor {
+    // MARK: Private Properties
+
+    private let requestFactory: NetworkRequestFactoryProtocol!
+    private let networkService: NetworkServiceProtocol!
+
+    // MARK: Internal Properties
+
+    weak var output: WeatherInteractorOutput!
+
     // MARK: Lifecycle
 
     init(requestFactory: NetworkRequestFactoryProtocol, networkService: NetworkServiceProtocol) {
         self.requestFactory = requestFactory
         self.networkService = networkService
     }
-
-    // MARK: Internal
-
-    weak var output: WeatherInteractorOutput!
-
-    // MARK: Private
-
-    private let requestFactory: NetworkRequestFactoryProtocol!
-    private let networkService: NetworkServiceProtocol!
 }
 
 // MARK: WeatherInteractorInput
@@ -36,7 +36,7 @@ extension WeatherInteractor: WeatherInteractorInput {
             guard let strongSelf = self else { return }
             switch result {
             case let .failure(error):
-                assertionFailure("Error: \(error)")
+                assertionFailure("Failed loading data from API: \(error)")
 
             case let .success(data):
                 do {
@@ -45,7 +45,7 @@ extension WeatherInteractor: WeatherInteractorInput {
                     let forecast = try decoder.decode(WeatherForecast.self, from: data)
                     strongSelf.output.setWeatherForecast(forecast: forecast)
                 } catch {
-                    assertionFailure("Error: \(error)")
+                    assertionFailure("Failed decoding data to WeatherForecast class: \(error)")
                 }
             }
         }
@@ -57,7 +57,7 @@ extension WeatherInteractor: WeatherInteractorInput {
             guard let strongSelf = self else { return }
             switch result {
             case let .failure(error):
-                assertionFailure("Error: \(error)")
+                assertionFailure("Failed loading data from API: \(error)")
 
             case let .success(data):
                 do {
@@ -66,7 +66,7 @@ extension WeatherInteractor: WeatherInteractorInput {
                     let forecast = try decoder.decode(WeatherForecast.self, from: data)
                     strongSelf.output.setWeatherForecast(forecast: forecast)
                 } catch {
-                    assertionFailure("Error: \(error)")
+                    assertionFailure("Failed decoding data to WeatherForecast class: \(error)")
                 }
             }
         }

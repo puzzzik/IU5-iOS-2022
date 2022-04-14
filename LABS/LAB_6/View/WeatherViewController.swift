@@ -11,9 +11,21 @@ import UIKit
 // MARK: - WeatherViewController
 
 class WeatherViewController: UIViewController {
-    // MARK: Internal
+    // MARK: Private Properties
+
+    private enum Constants {
+        static let headerHeight: CGFloat = 50
+        static let cellHeight: CGFloat = 50
+    }
+
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let headerView = WeatherTableViewHeader(frame: .zero)
+
+    // MARK: Internal Properties
 
     var output: WeatherViewOutput!
+
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,20 +36,11 @@ class WeatherViewController: UIViewController {
         output.viewDidLoad()
     }
 
-    // MARK: Private
-
-    private enum Constants {
-        static let headerHeight: CGFloat = 50
-        static let cellHeight: CGFloat = 50
-    }
-
-    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private let headerView = WeatherTableViewHeader(frame: .zero)
+    // MARK: Private Methods
 
     private func setupView() {
         title = "Weather Forecast"
         view.backgroundColor = .systemBackground
-
     }
 
     private func setupTable() {
