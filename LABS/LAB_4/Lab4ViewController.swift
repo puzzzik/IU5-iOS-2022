@@ -20,6 +20,7 @@ class Lab4ViewController: UIViewController {
 
     private func setupViewController() {
         title = "Лабораторная работа №4"
+        view.backgroundColor = .systemBackground
         view.addSubview(tableButton)
         view.addSubview(collectionButton)
     }
