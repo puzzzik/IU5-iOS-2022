@@ -29,6 +29,8 @@ final class InitialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Список лабораторных работ"
+        view.backgroundColor = .systemBackground
         setupTableViewController()
         setupTableViewConstraints()
     }
@@ -48,7 +50,6 @@ final class InitialViewController: UIViewController {
 
     private func setupTableViewController() {
         view.addSubview(tableViewController)
-        title = "Список лабораторных работ"
         tableViewController.delegate = self
         tableViewController.dataSource = self
         tableViewController.backgroundColor = .systemBackground

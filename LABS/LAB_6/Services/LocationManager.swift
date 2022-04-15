@@ -31,6 +31,7 @@ final class LocationManager: LocationManagerProtocol {
     // MARK: Internal
 
     func requestAuthorization() {
+        locationManager.showsBackgroundLocationIndicator = true
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
