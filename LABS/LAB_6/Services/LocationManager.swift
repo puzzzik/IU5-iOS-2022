@@ -13,6 +13,7 @@ import CoreLocation
 protocol LocationManagerProtocol {
     func requestAuthorization()
     func getCurrentLocation() -> CLLocation
+    func getCurrentCityName(completion: @escaping (String) -> Void)
 }
 
 // MARK: - LocationManager
@@ -21,6 +22,7 @@ final class LocationManager: LocationManagerProtocol {
     // MARK: Private
 
     private let locationManager: CLLocationManager
+    private var cityName = ""
 
     // MARK: Lifecycle
 
@@ -42,5 +44,20 @@ final class LocationManager: LocationManagerProtocol {
             return CLLocation(latitude: 0, longitude: 0)
         }
         return location
+    }
+
+    func getCurrentCityName(completion: @escaping (String) -> Void) {
+        let location = getCurrentLocation()
+        let geoCoder = CLGeocoder()
+
+        geoCoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                assertionFailure("Failed to get current city name \(error)")
+                return
+            }
+            guard let placemarks = placemarks else { return }
+
+            completion(placemarks.first?.locality ?? "Москва")
+        }
     }
 }

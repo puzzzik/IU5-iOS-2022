@@ -73,7 +73,9 @@ final class WeatherTableViewHeader: UIView {
 extension WeatherTableViewHeader: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        action?(textField.text ?? "")
+        let cityName = textField.text ?? ""
+        let trimmedCityName = cityName.trimmingCharacters(in: .whitespacesAndNewlines)
+        action?(trimmedCityName)
         return true
     }
 }
