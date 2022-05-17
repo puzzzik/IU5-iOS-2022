@@ -8,10 +8,10 @@
 import Foundation
 
 protocol WeatherInteractorInput: AnyObject {
-    func loadDataForCity(cityName: String)
-    func loadData()
+    func loadData(cityName: String?)
 }
 
 protocol WeatherInteractorOutput: AnyObject {
     func setWeatherForecast(forecast: WeatherForecast)
+    func didReceiveError(_ error: Error)
 }

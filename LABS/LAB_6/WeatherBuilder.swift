@@ -17,10 +17,19 @@ class WeatherBuilder {
 
         let requestFactory = NetworkRequestFactory(locationManager: locationManager)
 
+        let coreDataManager = CoreDataManager()
+        let fetchRequestFactory = FetchRequestFactory(locationManager: locationManager)
+        let storage = Storage(coreDataManager: coreDataManager,
+                              fetchRequestFactory: fetchRequestFactory)
+
         let interactor = WeatherInteractor(requestFactory: requestFactory,
-                                           networkService: networkService)
+                                           networkService: networkService,
+                                           storage: storage)
+
         let weatherDisplayDataFactory = WeatherDisplayDataFactory()
-        let presenter = WeatherPresenter(interactor: interactor, weatherDataDisplayFactory: weatherDisplayDataFactory)
+
+        let presenter = WeatherPresenter(interactor: interactor,
+                                         weatherDataDisplayFactory: weatherDisplayDataFactory)
 
         view.output = presenter
         presenter.view = view

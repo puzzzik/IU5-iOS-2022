@@ -11,6 +11,7 @@ import Foundation
 
 protocol WeatherViewInput: AnyObject {
     func reload()
+    func showAlert(title: String, message: String, error: Error)
 }
 
 // MARK: - WeatherViewOutput

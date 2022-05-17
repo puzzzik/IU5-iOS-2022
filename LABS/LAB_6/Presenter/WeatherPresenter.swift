@@ -34,7 +34,7 @@ final class WeatherPresenter {
 
 extension WeatherPresenter: WeatherViewOutput {
     func viewDidLoad() {
-        interactor.loadData()
+        interactor.loadData(cityName: nil)
     }
 
     func displayData(for indexPath: IndexPath) -> WeatherTableViewCell.DisplayData {
@@ -55,7 +55,7 @@ extension WeatherPresenter: WeatherViewOutput {
 
     func displayDataForHeader() -> WeatherTableViewHeader.DisplayData {
         let displayData = weatherDisplayDataFactory.tableHeaderDisplayData(with: tableHeaderPlaceholderText) { [weak self] cityName in
-            self?.interactor.loadDataForCity(cityName: cityName)
+            self?.interactor.loadData(cityName: cityName)
         }
         return displayData
     }
@@ -69,6 +69,10 @@ extension WeatherPresenter: WeatherModuleInput {
 // MARK: WeatherInteractorOutput
 
 extension WeatherPresenter: WeatherInteractorOutput {
+    func didReceiveError(_ error: Error) {
+        view.showAlert(title: "Ошибочка", message: "Не удалось получить данные из памяти устройства", error: error)
+    }
+
     func setWeatherForecast(forecast: WeatherForecast) {
         self.forecast = forecast
         view.reload()
