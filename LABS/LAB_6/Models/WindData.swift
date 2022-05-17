@@ -21,4 +21,9 @@ struct WindData: Decodable {
 		speed = try values.decode(Double.self, forKey: .speed)
 		degree = try values.decode(Double.self, forKey: .degree)
 	}
+
+    init(speed: Double, degree: Double) {
+        self.speed = speed
+        self.degree = degree
+    }
 }

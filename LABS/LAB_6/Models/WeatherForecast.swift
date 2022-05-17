@@ -33,4 +33,19 @@ struct WeatherForecast: Decodable {
 		visibility = try values.decode(Double.self, forKey: .visibility)
 		cityName = try values.decode(String.self, forKey: .cityName)
 	}
+
+
+    init(weatherMain: WeatherMain,
+         windData: WindData,
+         system: WeatherSystemData,
+         data: [WeatherData],
+         visibility: Double,
+         cityName: String) {
+        self.weatherMain = weatherMain
+        self.windData = windData
+        self.system = system
+        self.data = data
+        self.visibility = visibility
+        self.cityName = cityName
+    }
 }
